@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (min-width: 906px) and (max-width: 1200px) {
+  .hero-heading {
+    max-width: 400px;
+  }
+}
