@@ -4,7 +4,9 @@ import type { AppProps } from 'next/app'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div data-theme="kluften">
-      <Component {...pageProps} />
+      <div>
+        <Component {...pageProps} />
+      </div>
     </div>
   )
 }
