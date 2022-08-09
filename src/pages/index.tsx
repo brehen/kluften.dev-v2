@@ -6,6 +6,7 @@ import AboutMeSection from '@components/sections/AboutMeSection'
 import Proficiencies from '@components/sections/Proficiencies'
 import linux from '../../public/linux-3.png'
 import gatsby from '../../public/gatsby-3.png'
+import neko from '../../public/neko-traced.png'
 import CurvyEnd from '@components/Curves/CurvyEnd'
 import Experience from '@components/sections/ExperienceSection'
 
@@ -21,14 +22,23 @@ const Home: NextPage = () => {
 
       <main className="relative flex">
         <div className="hidden 3xl:block flex-1 relative">
-          <div className="sticky top-4 left-4 w-full">
+          <div className="sticky top-4 left-4 h-full max-h-screen w-full flex flex-col justify-between">
             <Image
               src={linux}
-              alt="Picture of me in Berlin"
+              alt="Gato numero uno"
               objectFit="cover"
               layout="responsive"
               className=""
-              quality={80}
+              quality={50}
+              objectPosition="center"
+            />
+            <Image
+              src={neko}
+              alt="Gato numero tres"
+              objectFit="cover"
+              layout="responsive"
+              className=""
+              quality={50}
               objectPosition="center"
             />
           </div>
@@ -45,13 +55,25 @@ const Home: NextPage = () => {
           <div className="w-full md:p-20 bg-primary" />
         </div>
         <div className="hidden 3xl:block flex-1 relative">
-          <div className="sticky top-4 right-4 w-full">
+          <div className="sticky top-4 left-4 h-full max-h-screen w-full flex flex-col justify-between">
             <Image
               src={gatsby}
-              alt="Picture of me in Berlin"
+              alt="Gato numero dos"
               objectFit="cover"
               layout="responsive"
               quality={80}
+              objectPosition="center"
+            />
+            <Image
+              src={neko}
+              alt="Gato numero tres"
+              objectFit="cover"
+              layout="responsive"
+              className=""
+              quality={50}
+              style={{
+                transform: 'rotateY(180deg)',
+              }}
               objectPosition="center"
             />
           </div>
