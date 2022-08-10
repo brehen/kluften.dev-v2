@@ -7,7 +7,6 @@ type Props = {
 }
 
 const HeroImage = forwardRef(({ heroImg = 'hero-0.jpg' }: Props, ref) => {
-  console.log(heroImg)
   return (
     <div className="flex relative w-full h-screen">
       <Image

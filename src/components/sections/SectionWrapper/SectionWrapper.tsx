@@ -19,14 +19,12 @@ export default function SectionWrapper({
   yOffset = -150,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
-  console.log(containerRef)
   const { isMd } = useBreakpoint('md')
   const boxVariants = {
     visible: { opacity: 1, y: isMd ? yOffset : 0 },
     hidden: { opacity: 0, y: 0 },
   }
   const isInView = useInView(containerRef)
-  console.log(isInView)
   const control = useAnimation()
   useEffect(() => {
     if (isInView) {
@@ -50,9 +48,9 @@ export default function SectionWrapper({
         variants={boxVariants}
         initial="hidden"
         animate={control}
-        className="p-1.5 bg-accent md:w-3/4 max-w-3xl flex"
+        className="p-1.5 bg-accent md:w-3/4 max-w-3xl flex rounded-xl"
       >
-        <div className="p-12 px-8 bg-white shadow-lg w-full">{children}</div>
+        <div className="p-12 px-8 bg-white rounded-lg w-full">{children}</div>
       </motion.div>
     </section>
   )

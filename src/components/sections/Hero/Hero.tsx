@@ -4,7 +4,7 @@ import Xarrow from 'react-xarrows'
 import HeroImage from './HeroImage'
 
 const getNewRandomNumber = (prev?: number): number => {
-  const random = Math.floor(Math.random() * 9)
+  const random = Math.floor(Math.random() * 8)
   if (random === prev) return getNewRandomNumber(prev)
   return random
 }
@@ -19,7 +19,7 @@ const Hero = () => {
 
   return (
     <section className="relative w-full h-screen">
-      <HeroImage heroImg={`hero-${randomHero}.png`} />
+      <HeroImage heroImg={`hero-${randomHero}.jpg`} />
       <div className="absolute z-40 top-0 left-0">
         <button
           className="btn-accent btn line-none"
