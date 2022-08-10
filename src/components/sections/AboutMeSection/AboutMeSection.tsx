@@ -24,7 +24,7 @@ const AboutMeSection = () => {
               <strong>NextJS</strong>, <strong>Tailwind</strong> and&nbsp;
               <strong>React Query</strong> are among my favorite technologies to
               work with at the moment. At Dr.Dropin, I&apos;ve introduced and
-              implemented most these technologies with great success.
+              implemented most of these technologies with great success.
             </p>
             <p>
               On my off-time, I love spending time with my two British
