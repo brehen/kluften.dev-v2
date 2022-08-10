@@ -3,10 +3,10 @@ import ResponsiveSVG from '@components/ResponsiveSVG'
 import { forwardRef } from 'react'
 
 type Props = {
-  heroImg: `hero-${number}.png`
+  heroImg: `hero-${number}.jpg`
 }
 
-const HeroImage = forwardRef(({ heroImg = 'hero-0.png' }: Props, ref) => {
+const HeroImage = forwardRef(({ heroImg = 'hero-0.jpg' }: Props, ref) => {
   console.log(heroImg)
   return (
     <div className="flex relative w-full h-screen">
