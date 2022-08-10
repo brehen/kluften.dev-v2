@@ -39,7 +39,7 @@ export const DCExpContent = () => {
       <div>
         <h3 className="flex justify-between items-end">
           ITverket
-          <span>Feb 2020 - Current</span>
+          <span>Feb 2020 - July 2021</span>
         </h3>
         <p>
           After a couple of years developing web applications on ServiceNow, I
