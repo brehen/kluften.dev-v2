@@ -18,7 +18,6 @@ const Home: NextPage = () => {
         <meta name="description" content="Web developer based in Oslo" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header></header>
 
       <main className="relative flex">
         <div className="hidden 3xl:block flex-1 relative">
@@ -61,7 +60,7 @@ const Home: NextPage = () => {
               alt="Gato numero dos"
               objectFit="cover"
               layout="responsive"
-              quality={80}
+              quality={50}
               objectPosition="center"
             />
             <Image
