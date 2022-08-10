@@ -24,20 +24,20 @@ const Proficiencies = () => {
 
 const profs = [
   {
-    heading: 'Frameworks',
-    subHeading: 'React, NextJS, Gatsby, Svelte',
-  },
-  {
     heading: 'Programming languages',
     subHeading: 'JavaScript/TypeScript, Elixir',
   },
   {
-    heading: 'Test frameworks',
-    subHeading: 'Jest, RTL, Cypress',
+    heading: 'Frameworks',
+    subHeading: 'React, NextJS, Gatsby, Svelte, Phoenix',
   },
   {
-    heading: 'Design tools',
-    subHeading: 'Sketch, Figma',
+    heading: 'State management',
+    subHeading: 'React-Query, Zustand, Redux',
+  },
+  {
+    heading: 'Test frameworks',
+    subHeading: 'Jest, RTL, Cypress',
   },
   {
     heading: 'Web debug tools',
