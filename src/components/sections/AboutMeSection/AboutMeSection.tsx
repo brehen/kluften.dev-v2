@@ -27,13 +27,20 @@ const AboutMeSection = () => {
               implemented most of these technologies with great success.
             </p>
             <p>
-              On my off-time, I love spending time with my two British
-              Shorthairs; Gatsby and Linux. Generally I can either be found in
-              the kitchen, in front of a video game, around a board game or at a
-              table of D&D.
+              I have three lovely pets, two british shorthairs: Linux and
+              Gatsby, and a Shiba Inu - Neko.
+              <small>
+                (hint: If you&apos;re not on a Ultrawide monitor, this is the
+                time to zoom out){' '}
+              </small>
+            </p>
+            <p>
+              Outside of work I can either be found in the kitchen, in front of
+              a video game, around a board game or at a table of D&D. Maybe at
+              our cottage.
             </p>
           </div>
-          <div className="prose-p:my-0 col-span-1 px-4 pt-6">
+          <div className="prose-p:my-0 col-span-1 px-4 pt-6 flex flex-col">
             <div className="hidden md:block p-1 mb-2 bg-warning">
               <Image
                 src={berlinPic}
@@ -44,8 +51,15 @@ const AboutMeSection = () => {
               />
             </div>
             <p>Oslo</p>
-            <p className="text-warning">marius@kluften.dev</p>
-            <p className="text-warning">LinkedIN</p>
+            <a href="mailto:mkluften93@gmail.com" className="text-warning">
+              mkluften93@gmail.com
+            </a>
+            <a
+              href="https://www.linkedin.com/in/kluften-dev/"
+              className="text-warning"
+            >
+              LinkedIn
+            </a>
           </div>
         </div>
       </div>
