@@ -42,7 +42,7 @@ const Hero = () => {
               developer based in Oslo.
             </span>
             <span>
-              Working for DrDropin, crafting
+              Working for Dr.Dropin, crafting
               <span className="mx-3 hover:motion-safe:animate-spin  mr-2 text-accent inline-block  bg-white transition px-1">
                 <span className="block">sweet</span>
               </span>

@@ -5,7 +5,7 @@ export const DCExpContent = () => {
     <>
       <div>
         <h3 className="flex justify-between items-end">
-          DrDropin, Full-stack developer
+          Dr.Dropin, Full-stack developer
           <span>Aug 2021 - Current</span>
         </h3>
         <p>
@@ -57,7 +57,8 @@ export const DCExpContent = () => {
           After a couple of years developing web applications on ServiceNow, I
           decided to follow my passion for more modern web development and got
           the opportunity to do this at ITverket. I was hired as a front-end
-          developer, and had a blast working for two clients during my time her.
+          developer, and had a blast working for two clients during my time
+          there.
           <ul>
             <li>
               Task - Built e-learning courses with React, hosted on their
