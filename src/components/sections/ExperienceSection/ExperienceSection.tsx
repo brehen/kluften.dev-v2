@@ -5,7 +5,7 @@ export const DCExpContent = () => {
     <>
       <div>
         <h3 className="flex justify-between items-end">
-          Dr.Dropin, Full-stack developer
+          Dr.Dropin, Full-stack
           <span>Aug 2021 - Current</span>
         </h3>
         <p>
