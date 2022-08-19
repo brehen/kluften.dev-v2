@@ -32,13 +32,13 @@ export const DCExpContent = () => {
             to fill out to get their tests on arrival. I was responsible for
             developing and scaling this webapp for the tens of thousands of
             people who flew in when Omicron hit before christmas in 2021. After
-            successfully implementing this form, we saw an increased throughput
-            of ~300%, as opposed to the previous system.
+            implementing this form, we saw an increased throughput of ~300%, as
+            opposed to the previous system.
           </li>
 
           <li>
             <strong>DrDropin.no</strong> - Built with GatsbyJS and Sanity.
-            Successfully implemented new design and rehauled the booking flow.
+            Implemented new design and rehauled the booking flow.
           </li>
           <li>
             <strong>New booking web app</strong> - Built with NextJS,
