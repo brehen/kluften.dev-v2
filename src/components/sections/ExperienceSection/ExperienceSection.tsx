@@ -82,7 +82,7 @@ export const DCExpContent = () => {
               </ul>
             </li>
             <li>
-              24SevenOffice - Joind their CRM team and helped them build a new
+              24SevenOffice - Joined their CRM team and helped them build a new
               CRM system.
             </li>
           </ul>
