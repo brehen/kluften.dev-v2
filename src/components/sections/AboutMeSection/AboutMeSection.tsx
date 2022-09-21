@@ -29,10 +29,6 @@ const AboutMeSection = () => {
             <p>
               I have three lovely pets, two british shorthairs: Linux and
               Gatsby, and a Shiba Inu - Neko.
-              <small>
-                (hint: If you&apos;re not on a Ultrawide monitor, this is the
-                time to zoom out){' '}
-              </small>
             </p>
             <p>
               Outside of work I can either be found in the kitchen, in front of

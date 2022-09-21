@@ -1,14 +1,13 @@
-export default function CurvyEnd({ flipped = false }) {
+import classNames from 'classnames'
+
+export default function CurvyEnd({ className = '' }) {
   return (
     <svg
       width="100%"
       preserveAspectRatio="none"
       viewBox="0 0 1441 220"
       version="1.1"
-      className="invisible md:visible h-[6rem] md:h-[120px]"
-      style={{
-        transform: flipped ? 'rotateX(180deg)' : '',
-      }}
+      className={classNames('hidden md:block h-[6rem] md:h-[120px]', className)}
     >
       <g
         id="Symbols"

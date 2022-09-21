@@ -53,12 +53,14 @@ export const DCExpContent = () => {
           ITverket, Front-end
           <span>Feb 2020 - July 2021</span>
         </h3>
-        <p>
-          After a couple of years developing web applications on ServiceNow, I
-          decided to follow my passion for more modern web development and got
-          the opportunity to do this at ITverket. I was hired as a front-end
-          developer, and had a blast working for two clients during my time
-          there.
+        <div>
+          <p>
+            After a couple of years developing web applications on ServiceNow, I
+            decided to follow my passion for more modern web development and got
+            the opportunity to do this at ITverket. I was hired as a front-end
+            developer, and had a blast working for two clients during my time
+            there.
+          </p>
           <ul>
             <li>
               Task - Built e-learning courses with React, hosted on their
@@ -84,7 +86,7 @@ export const DCExpContent = () => {
               CRM system.
             </li>
           </ul>
-        </p>
+        </div>
       </div>
       <div>
         <h3 className="flex justify-between items-end">
