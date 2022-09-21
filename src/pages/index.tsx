@@ -50,7 +50,7 @@ const Home: NextPage = () => {
           <Proficiencies />
           <div className="w-full py-10" />
           <Experience />
-          <CurvyEnd flipped />
+          <CurvyEnd className="rotate-x-180" />
           <div className="w-full md:p-20 bg-primary" />
         </div>
         <div className="hidden 3xl:block flex-1 relative">

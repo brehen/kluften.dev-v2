@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   content: [
@@ -42,5 +43,15 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('daisyui'),
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.rotate-x-180': {
+          transform: 'rotateX(180deg)',
+        },
+      })
+    }),
+  ],
 }
