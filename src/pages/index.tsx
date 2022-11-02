@@ -6,7 +6,7 @@ import AboutMeSection from '@components/sections/AboutMeSection'
 import Proficiencies from '@components/sections/Proficiencies'
 import linux from '../../public/linux-3.png'
 import gatsby from '../../public/gatsby-3.png'
-import neko from '../../public/neko-traced.png'
+import nekoKill from '../../public/neko-kill.png'
 import CurvyEnd from '@components/Curves/CurvyEnd'
 import Experience from '@components/sections/ExperienceSection'
 
@@ -32,7 +32,7 @@ const Home: NextPage = () => {
               objectPosition="center"
             />
             <Image
-              src={neko}
+              src={nekoKill}
               alt="Gato numero tres"
               objectFit="cover"
               layout="responsive"
@@ -64,7 +64,7 @@ const Home: NextPage = () => {
               objectPosition="center"
             />
             <Image
-              src={neko}
+              src={nekoKill}
               alt="Gato numero tres"
               objectFit="cover"
               layout="responsive"
