@@ -21,6 +21,21 @@ module.exports = {
           error: '#F31651',
         },
       },
+      {
+        'kluften-dark': {
+          primary: '#2c4c7f',
+          secondary: '#1a338f',
+          accent: '#ff3c9c',
+          'accent-alt': '',
+          'base-100': '#2A303C',
+          'base-content': '#d6ddca',
+          'primary-content': '#3d404c',
+          info: '#AACEE9',
+          success: '#15605A',
+          warning: '#d95318',
+          error: '#F31651',
+        },
+      },
     ],
   },
   theme: {

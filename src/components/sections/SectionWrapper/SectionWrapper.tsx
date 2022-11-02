@@ -48,9 +48,11 @@ export default function SectionWrapper({
         variants={boxVariants}
         initial="hidden"
         animate={control}
-        className="p-1.5 bg-accent md:w-3/4 max-w-3xl flex rounded-xl shadow-lg"
+        className="p-1.5 bg-accent md:w-3/4 max-w-3xl flex md:rounded-xl shadow-lg"
       >
-        <div className="p-12 px-8 bg-white rounded-lg w-full">{children}</div>
+        <div className="p-12 px-8 bg-primary-content rounded-lg w-full">
+          {children}
+        </div>
       </motion.div>
     </section>
   )
