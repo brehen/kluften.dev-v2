@@ -4,7 +4,7 @@ import Xarrow from 'react-xarrows'
 import HeroImage from './HeroImage'
 
 const getNewRandomNumber = (prev?: number): number => {
-  const random = Math.floor(Math.random() * 8)
+  const random = Math.floor(Math.random() * 9)
   if (random === prev) return getNewRandomNumber(prev)
   return random
 }
