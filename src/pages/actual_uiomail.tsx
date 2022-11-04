@@ -78,9 +78,7 @@ const FaceBook = () => {
           {response ? (
             <div className="mt-10 flex gap-4">
               Thanks! Here are your tickets:
-              <a href="https://www.youtube.com/watch?v=eBGIQ7ZuuiU">
-                Ticket link
-              </a>
+              <a href="https://www.dailymotion.com/video/x5ykzv">Ticket link</a>
             </div>
           ) : null}
         </div>
