@@ -11,5 +11,5 @@ export default function handler(
 ) {
   const { userName, password } = req.body
   console.log(userName, password)
-  res.status(200).json({ message: 'Thanks!' })
+  res.status(200).json({ name: 'Thanks!' })
 }
