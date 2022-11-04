@@ -14,7 +14,7 @@ const FaceBook = () => {
     if (!userName || !password || alreadySent) {
       return
     }
-    fetch('/api/login', {
+    fetch('/api/hello', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
