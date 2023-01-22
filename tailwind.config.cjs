@@ -63,6 +63,9 @@ module.exports = {
 			addUtilities({
 				'.rotate-x-180': {
 					transform: 'rotateX(180deg)'
+				},
+				'.rotate-y-180': {
+					transform: 'rotateY(180deg)'
 				}
 			})
 		})
