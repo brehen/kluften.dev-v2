@@ -16,7 +16,7 @@
 			<img src={neko} alt="Gato numero tres" />
 		</div>
 	</div>
-	<div class="w-screen max-w-[2560px]">
+	<div class="flex flex-col gap-16 w-screen max-w-[2560px] bg-primary">
 		<Hero />
 		<AboutMe />
 		<Proficiences />
