@@ -25,11 +25,9 @@
 </script>
 
 <SectionWrapper>
-	<div
-		class="w-full max-w-none prose prose-h2:text-accent-alt prose-h2:font-fancy"
-	>
-		<h2>Technical Proficiencies</h2>
-		<div class="flex text-xl">
+	<div class="w-full prose prose-h2:!text-primary-900 prose-h2:font-fancy">
+		<h2 class="section-title bg-tertiary-500">Technical Proficiencies</h2>
+		<div class="flex py-3 px-6 text-xl">
 			<ul class="p-0 m-0 list-none">
 				{#each profs as prof}
 					<li class="p-0">

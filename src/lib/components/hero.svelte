@@ -16,14 +16,14 @@ lg:object-center"
 			<h1 class="hero-heading">I&apos;m Marius Nilsen Kluften.</h1>
 			<h2 class="flex flex-col flex-wrap mt-8">
 				<span>
-					A<span class="inline-block px-1 mx-3 bg-white hover:animate-ping text-main">
+					A<span class="inline-block px-1 mx-2 bg-white hover:animate-ping text-primary-500">
 						web
 					</span>developer based in Oslo.
 				</span>
 				<span>
-					Working for Dr.Dropin, crafting
+					Working for JPro, crafting
 					<span
-						class="inline-block px-1 mx-3 mr-2 bg-white transition text-accent hover:motion-safe:animate-spin"
+						class="inline-block px-1 bg-white transition text-tertiary-500 hover:motion-safe:animate-spin"
 					>
 						<span class="block">sweet</span>
 					</span>
