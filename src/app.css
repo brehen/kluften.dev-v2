@@ -18,7 +18,7 @@
 
 body { @apply bg-surface-100-800-token; }
 
-a { @apply !text-warning-500-400-token }
+a { @apply !text-warning-600-300-token }
 
 .prose { @apply mt-0; }
 
@@ -33,3 +33,11 @@ a { @apply !text-warning-500-400-token }
 .accordion-item button {
   border-radius: 0;
 }
+.accordion-item {
+  @apply text-primary-900;
+}
+
+.accordion-panel a {
+  @apply !text-warning-600;
+}
+
