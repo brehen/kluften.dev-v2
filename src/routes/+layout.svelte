@@ -1,13 +1,13 @@
 <script>
 	// Your selected Skeleton theme:
 	import '../kluften.css'
-	import { autoModeWatcher } from '@skeletonlabs/skeleton'
 	// This contains the bulk of Skeletons required styles:
 	// NOTE: this will be renamed skeleton.css in the v2.x release.
 	import '@skeletonlabs/skeleton/styles/skeleton.css'
 
 	// Finally, your application's global stylesheet (sometimes labeled 'app.css')
 	import '../app.css'
+	import Navbar from '$lib/components/navbar.svelte'
 </script>
 
 <svelte:head>
@@ -46,6 +46,6 @@
 		type="font/ttf"
 		crossorigin="anonymous"
 	/>
-	{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}
 </svelte:head>
+<Navbar />
 <slot />

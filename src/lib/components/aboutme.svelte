@@ -1,6 +1,7 @@
 <script lang="ts">
 	import SectionWrapper from '$lib/components/sectionwrapper.svelte'
 	import marius from '$lib/assets/marius.jpeg'
+	import { filter } from '@skeletonlabs/skeleton'
 </script>
 
 <SectionWrapper>
@@ -32,8 +33,8 @@ prose-h2:!text-primary-900 prose-h2:font-fancy"
 			<div class="flex col-span-1 gap-2 pt-4 md:flex-col md:px-4 md:pt-6 prose-p:my-0">
 				<img
 					src={marius}
-					alt="Me in a burger bar in Berlin"
-					class="block m-0 mb-2 w-28 h-28 rounded-md border-2 bg-warning border-slate-800"
+					alt="Me and Neko at ZZ Pizza in Oslo"
+					class="block m-0 mb-2 w-28 h-28 rounded-md border-2 md:w-full md:h-auto bg-warning border-slate-800"
 				/>
 				<div>
 					<p>Marius Nilsen Kluften</p>

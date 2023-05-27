@@ -5,7 +5,7 @@
 
 <SectionWrapper>
 	<div
-		class="w-full prose prose-sm prose-h2:!text-primary-900
+		class="w-full prose prose-sm md:prose-base prose-h2:!text-primary-900
 prose-h3:!text-tertiary-600-300-token prose-h2:font-fancy prose-ul:p-1
 prose-ul:mt-0 prose-ul:rounded-lg prose-ul:bg-slate-300 prose-ul:list-disc
 prose-ul:list-inside"
@@ -124,7 +124,7 @@ prose-ul:list-inside"
 				</div>
 			</div>
 		</div>
-		<div class="px-6">
+		<div class="px-3 md:px-6">
 			<h3 class="flex justify-between items-end">
 				Sopra Steria, Frontend developer
 				<span class="text-right">Dec 2017 - Jan&NonBreakingSpace;2020</span>
@@ -176,7 +176,7 @@ prose-ul:list-inside"
 				</Accordion>
 			</div>
 		</div>
-		<div class="px-6">
+		<div class="px-3 md:px-6">
 			<h3 class="flex justify-between align-end">
 				Syscom, Consultant
 				<span class="text-right">June 2017 - Nov&NonBreakingSpace;2017</span>

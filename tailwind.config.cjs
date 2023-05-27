@@ -18,6 +18,12 @@ module.exports = {
 			},
 			screens: {
 				'3xl': '2560px'
+			},
+			width: {
+				dscreen: '100dvw'
+			},
+			height: {
+				dscreen: '100dvh'
 			}
 		}
 	},
