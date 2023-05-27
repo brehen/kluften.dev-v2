@@ -15,3 +15,21 @@
 .noise {
   background-image: url("data:image/svg+xml,<svg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
+
+body { @apply bg-surface-100-800-token; }
+
+a { @apply !text-warning-500-400-token }
+
+.prose { @apply mt-0; }
+
+.section-title {
+  @apply p-6 pt-4 pb-2 mb-0 outline-primary-900 outline-dashed noise;
+}
+
+.prose {
+  --tw-prose-bullets: @apply text-primary-900;
+}
+
+.accordion-item button {
+  border-radius: 0;
+}
