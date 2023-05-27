@@ -1,36 +1,45 @@
 {
-  "name": "kluften.dev",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@react-hook/intersection-observer": "^3.1.1",
-    "@sendgrid/mail": "^7.7.0",
-    "classnames": "^2.3.2",
-    "daisyui": "^2.38.0",
-    "framer-motion": "^7.6.4",
-    "next": "13.0.1",
-    "prettier": "^2.7.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-responsive": "^9.0.0",
-    "react-xarrows": "^2.0.2",
-    "scrollmagic": "^2.0.8"
-  },
-  "devDependencies": {
-    "@tailwindcss/typography": "^0.5.7",
-    "@types/node": "18.11.9",
-    "@types/react": "18.0.24",
-    "autoprefixer": "^10.4.13",
-    "eslint": "8.26.0",
-    "eslint-config-next": "13.0.1",
-    "postcss": "^8.4.18",
-    "tailwindcss": "^3.2.1",
-    "typescript": "4.8.4"
-  }
+	"name": "kluften.dev.svelte",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"test": "playwright test",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"test:unit": "vitest",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"format": "prettier --plugin-search-dir . --write ."
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.34.3",
+		"@skeletonlabs/skeleton": "^1.6.2",
+		"@sveltejs/adapter-auto": "^2.1.0",
+		"@sveltejs/adapter-vercel": "^3.0.0",
+		"@sveltejs/kit": "^1.19.0",
+		"@tailwindcss/typography": "^0.5.9",
+		"@typescript-eslint/eslint-plugin": "^5.59.7",
+		"@typescript-eslint/parser": "^5.59.7",
+		"autoprefixer": "^10.4.14",
+		"eslint": "^8.41.0",
+		"eslint-config-prettier": "^8.8.0",
+		"eslint-plugin-svelte3": "^4.0.0",
+		"highlight.js": "^11.8.0",
+		"postcss": "^8.4.23",
+		"prettier": "^2.8.8",
+		"prettier-plugin-svelte": "^2.10.0",
+		"svelte": "^3.59.1",
+		"svelte-check": "^3.4.2",
+		"tailwindcss": "^3.3.2",
+		"tslib": "^2.5.2",
+		"typescript": "^5.0.4",
+		"vite": "^4.3.9",
+		"vitest": "^0.31.1"
+	},
+	"type": "module",
+	"dependencies": {
+		"svelte-inview": "^4.0.0"
+	}
 }
