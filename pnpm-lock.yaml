@@ -1,9 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
-  svelte-inview:
-    specifier: ^4.0.0
-    version: 4.0.0(svelte@3.59.1)
+  svelte-markdown:
+    specifier: ^0.2.3
+    version: 0.2.3(svelte@3.59.1)
 
 devDependencies:
   '@playwright/test':
@@ -753,6 +753,10 @@ packages:
   /@types/json-schema@7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
+
+  /@types/marked@4.3.1:
+    resolution: {integrity: sha512-vSSbKZFbNktrQ15v7o1EaH78EbWV+sPQbPjHG+Cp8CaNcPFUEfjZ0Iml/V0bFDwsTlYe8o6XC5Hfdp91cqPV2g==}
+    dev: false
 
   /@types/node@18.11.18:
     resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
@@ -1961,6 +1965,12 @@ packages:
       semver: 6.3.0
     dev: true
 
+  /marked@4.3.0:
+    resolution: {integrity: sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A==}
+    engines: {node: '>= 12'}
+    hasBin: true
+    dev: false
+
   /md5-hex@3.0.1:
     resolution: {integrity: sha512-BUiRtTtV39LIJwinWBjqVsU9xhdnz7/i889V859IBFpuqGAj6LuOvHv5XLbgZ2R7ptJoJaEcxkv88/h25T7Ciw==}
     engines: {node: '>=8'}
@@ -2653,11 +2663,13 @@ packages:
       svelte: 3.59.1
     dev: true
 
-  /svelte-inview@4.0.0(svelte@3.59.1):
-    resolution: {integrity: sha512-2lvfkJRkmHt19RvDe5MrIK/pFiPJhyXbKL6JrEyRNC73EYTmFSMBc7481UIw01s5+/+uRQXRPvrtC0zA45HLaA==}
+  /svelte-markdown@0.2.3(svelte@3.59.1):
+    resolution: {integrity: sha512-2h680NzTXnAD0CXhxe3GeHl6W+ayG4iKQRl+BIDRw+R0mUE0OiNxP1Vt8Rn+aWevB/LBiBIPCAwvL+0BkG057A==}
     peerDependencies:
       svelte: ^3.0.0
     dependencies:
+      '@types/marked': 4.3.1
+      marked: 4.3.0
       svelte: 3.59.1
     dev: false
 
