@@ -7,6 +7,7 @@
 
 	// Finally, your application's global stylesheet (sometimes labeled 'app.css')
 	import '../app.css'
+	import '../keyframes.css'
 	import Navbar from '$lib/components/navbar.svelte'
 </script>
 
