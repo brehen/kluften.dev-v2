@@ -39,10 +39,6 @@ prose-ul:list-inside"
 						<svelte:fragment slot="content">
 							<ul class="p-1 mt-0">
 								<li>
-									<a href="https://theseus.drdropin.no/">Theseus</a> - a component library built with
-									Storybook, React, TypeScript and bundled with Rollup.
-								</li>
-								<li>
 									<a href="https://cr.drdropin.no/">Covid-19 test registration</a> - a web application
 									that everyone who flew into OSL Airport from an international flight had to fill out
 									to get their tests on arrival. I was responsible for developing and scaling this webapp
@@ -65,6 +61,10 @@ prose-ul:list-inside"
 									<a href="https://booking.drdropin.no/">booking.drdropin.no</a> - Built with NextJS,
 									TypeScript, React Query, Zustand. Second phase of rehauling the booking flow includes
 									splitting into a separate web app, based on NextJS.
+								</li>
+								<li>
+									<a href="https://theseus.drdropin.no/">Theseus</a> - a component library built with
+									Storybook, React, TypeScript and bundled with Rollup.
 								</li>
 							</ul>
 						</svelte:fragment>
