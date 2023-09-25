@@ -19,7 +19,7 @@
 </AppBar>
 
 <style>
-  :global(.app-bar) {
-    @apply fixed w-full z-[999];
-  }
+	:global(.app-bar) {
+		@apply fixed w-full z-[999];
+	}
 </style>

@@ -1,7 +1,7 @@
 :root {
 	/* =~= Theme Properties =~= */
-  --theme-font-family-base: Overpass, sans-serif;
-  --theme-font-family-heading: Poppins, sans-serif;
+	--theme-font-family-base: Overpass, sans-serif;
+	--theme-font-family-heading: Poppins, sans-serif;
 	--theme-font-color-base: 0 0 0;
 	--theme-font-color-dark: 255 255 255;
 	--theme-rounded-base: 16px;
@@ -93,5 +93,4 @@
 	--color-surface-700: 97 107 137; /* ⬅ #616b89 */
 	--color-surface-800: 77 85 109; /* ⬅ #4d556d */
 	--color-surface-900: 63 70 89; /* ⬅ #3f4659 */
-	
 }
