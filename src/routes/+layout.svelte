@@ -9,6 +9,8 @@
 	import '../app.css'
 	import '../keyframes.css'
 	import Navbar from '$lib/components/navbar.svelte'
+	import Footer from '$lib/components/footer.svelte'
+	import { page } from '$app/stores'
 </script>
 
 <svelte:head>
@@ -50,3 +52,6 @@
 </svelte:head>
 <Navbar />
 <slot />
+{#if $page.url.pathname !== '/'}
+	<Footer />
+{/if}
