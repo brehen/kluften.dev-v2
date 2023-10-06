@@ -1,7 +1,6 @@
 <script lang="ts">
 	import SectionWrapper from '$lib/components/sectionwrapper.svelte'
 	import marius from '$lib/assets/marius.jpeg'
-	import { filter } from '@skeletonlabs/skeleton'
 </script>
 
 <SectionWrapper>
