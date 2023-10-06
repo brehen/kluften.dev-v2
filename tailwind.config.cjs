@@ -24,6 +24,9 @@ module.exports = {
 			},
 			height: {
 				dscreen: '100dvh'
+			},
+			spacing: {
+				nav: '72px'
 			}
 		}
 	},
