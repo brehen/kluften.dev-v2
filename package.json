@@ -41,6 +41,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"radash": "^11.0.0",
 		"svelte-markdown": "^0.2.3"
 	}
 }
