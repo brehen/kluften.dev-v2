@@ -4,7 +4,7 @@ import path from 'path'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = ({ params }) => {
-	const filePath = path.join(process.cwd(), 'static/blog-posts', `${params.slug}.md`)
+	const filePath = path.join(process.cwd(), 'blog-posts', `${params.slug}.md`)
 
 	if (!fs.existsSync(filePath)) {
 		return { status: 404, error: new Error('Post not found') }
