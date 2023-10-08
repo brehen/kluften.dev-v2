@@ -33,7 +33,7 @@
 <nav
 	class={[
 		'fixed z-[999] w-full flex justify-center h-nav px-4 md:px-8 py-4 transition-all',
-		onSide ? 'bg-surface-100-800-token md:bg-transparent' : 'bg-surface-100-800-token'
+		onSide ? 'bg-surface-100-800-token md:!bg-transparent' : 'bg-surface-100-800-token'
 	]
 		.filter(Boolean)
 		.join(' ')}
