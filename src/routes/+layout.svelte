@@ -9,8 +9,9 @@
 	import '../app.css'
 	import '../keyframes.css'
 	import Navbar from '$lib/components/navbar.svelte'
-	import Footer from '$lib/components/footer.svelte'
-	import { page } from '$app/stores'
+	import linux from '$lib/assets/linux-1.png'
+	import gatsby from '$lib/assets/gatsby-1.png'
+	import neko from '$lib/assets/neko-traced.png'
 </script>
 
 <svelte:head>
@@ -51,7 +52,22 @@
 	/>
 </svelte:head>
 <Navbar />
-<slot />
-{#if $page.url.pathname !== '/'}
-	<Footer />
-{/if}
+<main class="flex relative">
+	<div class="hidden relative flex-1 3xl:block">
+		<div class="flex sticky top-4 left-4 flex-col justify-between w-full h-full max-h-screen">
+			<img src={linux} alt="Gato numero uno" />
+			<img src={neko} alt="Gato numero tres" />
+		</div>
+	</div>
+	<div
+		class="flex flex-col items-center justify-center pt-nav px-8 w-screen max-w-[2560px] min-h-[100dvh]"
+	>
+		<slot />
+	</div>
+	<div class="hidden relative flex-1 3xl:block">
+		<div class="flex sticky top-4 left-4 flex-col justify-between w-full h-full max-h-screen">
+			<img src={gatsby} alt="Gato numero dos" class="w-inherit" />
+			<img src={neko} alt="Gato numero tres" class="rotate-y-180" />
+		</div>
+	</div>
+</main>
