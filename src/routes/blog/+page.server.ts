@@ -4,7 +4,7 @@ import path from 'path'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async () => {
-	const blogDir = path.join(process.cwd(), 'files.json')
+	const blogDir = path.join(process.cwd(), 'blog-posts.json')
 	const files = await fs.promises.readdir(blogDir)
 	const posts = files.map((file) => {
 		const filePath = path.join(blogDir, file)
