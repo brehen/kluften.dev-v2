@@ -22,6 +22,7 @@ export default [
 		slug: 'wasm-io-23',
 		published: 'Thursday, May 11, 2023',
 		title: 'Surfing the third wave',
-		description: '5 Things I learned about WebAssembly in Barcelona'
+		description:
+			'5 Things I learned about WebAssembly in Barcelona [Originally posted on JPro blog]'
 	}
 ] as BlogMeta
