@@ -14,8 +14,14 @@ export default [
 	},
 	{
 		slug: 'nebula_chapter0',
-		published: 'October 9, 2023',
+		published: 'Monday, October 9, 2023',
 		title: 'Building Nebula - Prologue',
 		description: "My master thesis' backstory, building a FaaS prototype"
+	},
+	{
+		slug: 'wasm-io-23',
+		published: 'Thursday, May 11, 2023',
+		title: 'Surfing the third wave',
+		description: '5 Things I learned about WebAssembly in Barcelona'
 	}
 ] as BlogMeta
