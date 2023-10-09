@@ -5,6 +5,8 @@ courtesy of a generous course and conference budget from my employer,
 JProfessionals. This lets me explore technologies that catch my interest and
 might be relevant for our customers.
 
+![Opening](/blog-assets/wasm-io.jpg)
+
 The conference brought together leading experts from around the world to discuss
 the latest advancements and innovations in Wasm. In this blog post I will share
 with you 5 things I learned in Barcelona and attempt to describe the exciting
