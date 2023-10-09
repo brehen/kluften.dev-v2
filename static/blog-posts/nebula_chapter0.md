@@ -1,8 +1,12 @@
 # Building Nebula - Prologue
 
-A Function-as-a-Service platform powered by WebAssembly and WASI
+> A Function-as-a-Service platform powered by WebAssembly, built with Rust
 
-You've probably already seen this quote everywhere:
+| ![Nebula](/blog-assets/eagle-nebula.jpg)                                   |
+| -------------------------------------------------------------------------- |
+| Picture of the Eagle Nebula [src](https://unsplash.com/photos/6tUdJ3fWgBg) |
+
+By now, you might have stumbled upon this well-known quote:
 
 > If WASM+WASI existed in 2008, we wouldn't have needed to created Docker.
 > That's how important it is. Webassembly on the server is the future of
@@ -10,11 +14,9 @@ You've probably already seen this quote everywhere:
 > WASI is up to the task!
 > [_Solomon Hykes, founder of Docker_](https://twitter.com/solomonstre/status/1111004913222324225?lang=en)
 
-But, I'm currently exploring this premise and working on building a FaaS prototype that exclusively runs WebAssembly modules in order to measure the potential computational savings that can be achieved, and consequently how much power can be saved on more efficient technologies for my master's thesis.
+It's a bold statement that has been circulating ever since. I'm currently exploring this vision, where I've embarked on an adventure to build a FaaS prototype that exclusively runs WebAssembly modules. The goal? To discover the potential computational and energy efficiency such an approach might offer, forming the backbone of my master's thesis research.
 
-I set out to compare how the current status quo, being FaaS platforms like AWS lambdas, Google Cloud Functions and Azure Functions, compares to a platform that quickly spins up Wasm modules, runs the requested function, and spins down again.
-
-Note: this first blog post is mostly the background and motivation for building Nebula, if you want to jump straight to the technical implementation, you can start with Chapter 1 here: [Building Nebula - Chapter 1](/blog/nebula_chapter1) (when it's out!)
+In essence, I aim to compare the performance and efficiency of predominant FaaS platforms - such as AWS Lambdas, Google Cloud Functions and Azure systems - against a system that rapidly initialises Wasm modules, executes the underlying function, and promptly shuts them down.
 
 ## Finding my Master thesis topic
 
@@ -35,31 +37,34 @@ Furthermore, as they advertise on their own [webpage](https://www.fermyon.com/#f
 
 ![Graph 2](/blog-assets/prologue-wasm_vs_docker_neko_size.svg)
 
-## Why build a FaaS prototype?
+## Why purse a FaaS prototype?
 
-These metrics sounded pretty wild to me, and the amazing work Fermyon and the WebAssembly community is doing to get the "third wave of cloud computing" to wash over us
-motivated me to want to explore how much power we might be able to save if we, as an industry, move towards more efficient technologies to power our cloud.
+These metrics presented by Fermyon and the WebAssembly community are nothing short of remarkable.
+They've summarised their vision in the "third wave of cloud computing", with Virtual machines being the first wave and Containerisation (Docker) being the second wave.
+This begs the question: What kind of energy savings might we achieve if the industry leans more into these efficient cloud technologies?
 
-As a result of this, and with help from my supervisors at my University, I landed on the following hypothesis for my thesis:
+Guided by this curiosity - and with invaluable insight from my university supervisors - I formulated the hypothesis for my thesis:
 
 > It is possible to develop a Pure FaaS platform that scale to near-zero
 > resource usage, using WebAssembly modules
 
-Perhaps a lofty goal, but it leaves me a lot of room on what scope I end up with for the prototype I'm building this fall, and I'll go into more technical detail and the overall design in the next part!
+It's an ambitious objective, no doubt. Yet, this broad premise provides me ample space in how I end up building the prototype this fall.
+A cornerstone for this prototype? The principle of "pure" functionality.
 
 ## Building a "Pure" FaaS
 
-As you might notice from the hypothesis, I have the term "Pure" placed before "FaaS", meaning that for the prototype I would like to scope down to experimenting on how a FaaS platform that only allow pure functions to be run on it might look like and perform.
+You've probably noticed the emphasis on "pure" in my hypothesis.
+In order to develop a prototype I can start experimenting on within the time-frame of a Master's thesis, I decided to scope it down to explore a FaaS platform that operate on pure functions.
 
-A pure function is commonly defined as:
+For those unaware of what a "pure function" is, it can be defined as such:
 
 > A pure function is a function that, given the same input, will always return the same output and does not have any observable side effect. [Mostly Adequate](https://github.com/MostlyAdequate/mostly-adequate-guide/blob/master/ch03.md#oh-to-be-pure-again)
 
-With this restriction in place, I can expect that the same input to a function will always produce the same input.
-This will allow me to explore some interesting orchestration and caching patterns for functions deployed to the platform. Like the following theoretical example:
+This principle of purity assures consistent output for consistent output, a quality that opens up for interesting experimenting. This will allow me to explore some interesting orchestration and caching patterns for functions deployed to the platform, much like a hypothetical example illustrated below:
 
-![Currying example](/blog-assets/pure-function-chain-example.svg)
+![Chaining functions example](/blog-assets/pure-function-chain-example.svg)
 
-Of course, actually implementing a system that dynamic might end up blowing up the scope for my thesis, so I will probably focus on experimenting with pre-written functions running on the platform. We'll see!
+Naturally, building such a dynamic system has its challenges, and there's always a risk of overextending the scope of my thesis. Thus, my focus might lean more towards experimenting with pre-defined functions on the platform.
+We'll see!
 
-If you got this far, thanks for reading this! I'm excited about sharing more technical details down the line. Stick around for Chapter 1 where we'll delve deeper into Nebula. When it's up, you'll find the next chapter here: [Building Nebula - Chapter 1](/blog/nebula_chapter1)
+If you've journeyed with me this to this point, I really appreciate your time and interest! I'm excited about sharing more technical details down the line. Stick around for Chapter 1 where we'll delve deeper into Nebula. When it's up, you'll find the next chapter here: [Building Nebula - Chapter 1](/blog/nebula_chapter1)
