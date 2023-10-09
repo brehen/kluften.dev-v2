@@ -12,6 +12,8 @@ future heralded as the _third wave of cloud computing_.
 
 ## First of all, what is Wasm? 🤔
 
+![WebAssembly](/blog-assets/wasm.jpg)
+
 WebAssembly, often abbreviated as Wasm, is a low-level binary format designed to
 run alongside JavaScript in web browsers. You can write code in a language you
 already know, including C, C++, Go, and Rust, and compile it to Wasm. Figma, the
@@ -38,6 +40,8 @@ WASI, developers can bring Wasm out of the browser and into server applications.
 WASI aims to promote code re-usability, cross-platform applications, and
 containerization.
 
+![Wasi + wasm = true](/blog-assets/wasi_wasm.jpg)
+
 When WASI was announced back in March 2019, Solomon Hykes, the creator of
 Docker, tweeted this:
 
@@ -58,6 +62,8 @@ Talks about WASI:
   for running Wasm on the cloud
 
 ## 2. We're entering the third wave of cloud computing 🏄
+
+![Three waves of cloud compute](/blog-assets/three_waves.png)
 
 The first wave of cloud computing saw the rise of virtual machines running on
 managed infrastructure. The following second wave is attributed to the rise of
@@ -156,9 +162,16 @@ on other platforms, like AWS, Azure or GCP.
 
 Thorsten Hans, a Cloud-native consultant from Germany, held a great talk about
 getting started with Spin with:
-[Spin it! Jumpstart your Wasm journey with Fermyon Spin](https://www.youtube.com/watch?v=ai5p5oubTm8)
+[Spin it! Jumpstart your Wasm journey with
+Fermyon Spin](https://www.youtube.com/watch?v=ai5p5oubTm8)
 
-## What now? 🤔
+To read more about Spin
+
+- [Getting started with Spin](https://developer.fermyon.com/spin/index)
+- [Spin features language support](https://developer.fermyon.com/spin/language-support-overview)
+- [How-to install on other platforms](https://github.com/fermyon/installer)
+
+## What now?
 
 I wouldn't say it's time to tear down all developer platforms relying on Docker
 and Kubernetes, but after this conference I'm pretty convinced WebAssembly will
@@ -166,20 +179,22 @@ play a big role in the future of our Cloud. Writing Wasm by itself seems like a
 chore, but I have some great resources that can help you getting started,
 relying on perhaps more familiar languages.
 
-Wasm by example: A great hands-on introduction using code snippets from
-languages like Rust and AssemblyScript. If you're a TypeScript developer like
-myself, the examples in AssemblyScript will be familiar. Fermyon Workshop: I
-attended a workshop hosted by Fermyon, where they tasked us with picking a
-supported language and build a simple magic 8 ball application and deploy it,
-all with Spin. I chose Rust, and spent most of the time fighting with ownership,
-and in hindsight should have chosen TypeScript. You can follow the exercices
-from the link, and it should give you a some pointers on what you can do with
-this.
+- [Wasm by example](https://wasmbyexample.dev/): A great hands-on introduction
+  using code snippets from languages like Rust and AssemblyScript. If you're
+  mainly a TypeScript developer like myself, the examples in AssemblyScript will
+  be familiar.
+- [Fermyon Workshop](https://github.com/fermyon/workshops): I attended a
+  workshop hosted by Fermyon, where they tasked us with picking a supported
+  language and build a simple magic 8 ball application and deploy it, all with
+  Spin. I chose Rust, and spent most of the time fighting with ownership, and in
+  hindsight should have chosen TypeScript. You can follow the exercices from the
+  link, and it should give you a some pointers on what you can do with this.
 
 Personally, I'm not entirely convinced that we'll abandon Docker and Kubernetes
 in favor of Wasm, but we might see a world where they work in tandem,
-complementing each other. Just like how Wasm was developed to complement
-JavaScript. Maybe that is what the third wave of cloud computing will end up
-being?
+complementing each other. Maybe that is what the third wave of cloud computing
+will end up being?
 
-Who knows what the fourth wave will bring? 🏄
+Who knows what the _fourth_ wave will bring? 🏄
+
+![Neko surfing](/blog-assets/neko_surfing.jpeg)
