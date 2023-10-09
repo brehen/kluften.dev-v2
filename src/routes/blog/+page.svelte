@@ -3,11 +3,11 @@
 </script>
 
 <div class="prose min-h-screen">
-	<h1 class="text-5xl text-primary-500">Marius's latest posts</h1>
+	<h1 class="text-5xl text-primary-500 dark:text-white !h1">Marius's latest posts</h1>
 
 	{#each blogMeta as post}
 		<a
-			class="h2 no-underline font-bold dark:text-ink-300 text-tertiary-600-300-token"
+			class="h3 no-underline font-bold dark:text-ink-300 text-tertiary-600-300-token"
 			href={`/blog/${post.slug}`}>{post.title}</a
 		>
 		<p>

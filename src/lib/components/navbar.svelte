@@ -34,14 +34,15 @@
 	class={[
 		'fixed z-[999] w-full flex justify-center h-nav px-4 md:px-8 py-4 transition-all',
 		onSide ? 'bg-surface-100-800-token md:!bg-transparent' : 'bg-surface-100-800-token'
-	]
-		.filter(Boolean)
-		.join(' ')}
+	].join(' ')}
 >
 	<div class="flex items-center justify-between w-full max-w-5xl">
 		<div class="relative">
-			<a href="/" class="flex flex-col gap-4 items-center !text-primary-900-50-token">
+			<a href="/" class="flex gap-4 items-end !text-primary-900-50-token leading-none">
 				<Logo />
+				{#if !onSide}
+					kluften.dev
+				{/if}
 			</a>
 			{#if onSide && shouldSwap}
 				<div class="md:rotate-90 absolute whitespace-nowrap vertical-text pb-1 text-xl">
@@ -55,7 +56,7 @@
 				</div>
 			{/if}
 		</div>
-		<div class="z-[999] right-0 top-0 flex items-center !text-primary-900-50-token gap-8">
+		<div class="z-[999] right-0 top-0 flex items-center !text-warning-600-300-token gap-8 text-xl">
 			<a href="/blog">blog</a>
 			<LightSwitch />
 		</div>

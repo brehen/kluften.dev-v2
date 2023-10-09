@@ -8,7 +8,7 @@
 		class="relative mt-0 w-full rounded-bl-2xl prose
 prose-h2:!text-primary-900 prose-h2:font-fancy"
 	>
-		<h2 class="section-title bg-warning-500">Background</h2>
+		<h2 class="section-title bg-warning-500 h4">Background</h2>
 		<div class="grid-cols-3 px-6 md:grid md:pr-3">
 			<div class="col-span-2 border-b-2 md:border-none border-slate-900">
 				<p class="mt-4">

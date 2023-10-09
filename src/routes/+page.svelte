@@ -10,24 +10,10 @@
 	import Education from '$lib/components/education.svelte'
 </script>
 
-<main class="flex relative">
-	<div class="hidden relative flex-1 3xl:block">
-		<div class="flex sticky top-4 left-4 flex-col justify-between w-full h-full max-h-screen">
-			<img src={linux} alt="Gato numero uno" />
-			<img src={neko} alt="Gato numero tres" />
-		</div>
-	</div>
-	<div class="flex flex-col gap-12 mb-8 w-screen max-w-[2560px]">
-		<Hero />
-		<AboutMe />
-		<Proficiences />
-		<Education />
-		<Experience />
-	</div>
-	<div class="hidden relative flex-1 3xl:block">
-		<div class="flex sticky top-4 left-4 flex-col justify-between w-full h-full max-h-screen">
-			<img src={gatsby} alt="Gato numero dos" class="w-inherit" />
-			<img src={neko} alt="Gato numero tres" class="rotate-y-180" />
-		</div>
-	</div>
-</main>
+<div class="flex flex-col gap-12 mb-8 w-screen max-w-[2560px]">
+	<Hero />
+	<AboutMe />
+	<Proficiences />
+	<Education />
+	<Experience />
+</div>

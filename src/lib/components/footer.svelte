@@ -3,7 +3,7 @@
 	import marius from '$lib/assets/marius.jpeg'
 </script>
 
-<footer class="mt-auto w-full mb-nav">
+<footer class="mt-auto w-full">
 	<SectionWrapper>
 		<div
 			class="relative mt-0 w-full rounded-bl-2xl prose
