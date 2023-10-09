@@ -26,9 +26,9 @@ body {
 	@apply transition-colors;
 }
 
-a {
-	@apply !text-warning-600-300-token;
-}
+/* a { */
+/* 	@apply !text-warning-600-300-token; */
+/* } */
 
 .prose {
 	@apply mt-0;

@@ -43,8 +43,11 @@
 	})
 </script>
 
-<section class="prose pt-10 pb-40" bind:this={section}>
-	<SvelteMarkdown source={data.props.content} />
+<section
+	class="prose pt-10 pb-40 prose-h1:text-tertiary-600-300-token prose-h2:text-tertiary-600-300-token prose-a:text-warning-600-300-token"
+	bind:this={section}
+>
+	<SvelteMarkdown source={data.content} />
 </section>
 
 <style>
