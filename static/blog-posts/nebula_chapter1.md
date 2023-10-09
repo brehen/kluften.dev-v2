@@ -1,3 +1,3 @@
-# Not much here yet!
+# Building Nebula - Chapter 1
 
-![Neko](/blog-posts/prologue-wasm_vs_docker.svg)
+Still working on it!

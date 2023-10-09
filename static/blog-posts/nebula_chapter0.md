@@ -13,7 +13,7 @@ But, I'm currently exploring this premise and working on building a FaaS prototy
 
 I set out to compare how the current status quo, being FaaS platforms like AWS lambdas, Google Cloud Functions and Azure Functions, compares to a platform that quickly spins up Wasm modules, runs the requested function, and spins down again.
 
-> Note: this first blog post is mostly the background and motivation for building Nebula, if you want to jump straight to the technical implementation, you can start with Part 1 here: [Building Nebula - Part 1](/blog/nebula-chapter1)
+> Note: this first blog post is mostly the background and motivation for building Nebula, if you want to jump straight to the technical implementation, you can start with Chapter 1 here: [Building Nebula - Chapter 1](/blog/nebula-chapter1) (when it's out!)
 
 ## Why build a FaaS prototype?
 
@@ -28,9 +28,9 @@ I can attribute the initial idea for my master's thesis to the podcast episode [
 In this episode, Matt Butcher, the CEO of Fermyon goes in depth as to why they decided to startup a company focused on building a cloud platform that exclusively runs computations for its users on programs compiled to WebAssembly modules and uploaded to their cloud, either self-hosted, or on their Fermyon Cloud offering.
 In his explanation, he mentioned that they observed rather insane startup times compared to more typical container-based function-as-a-service offerings out there, going from comparable service in a Docker container taking **300ms+** just to start up, down to **sub 1ms** startup times for a comparable Wasm-module delivering the same functionality.
 
-|                 ![Graph 1](/blog-assets/prologue-wasm_vs_docker_neko.svg)                  |
-| :----------------------------------------------------------------------------------------: |
-| \_The bars are the right scale, as it would be impossible to show < 1ms compared to 300ms+ |
+|                       ![Graph 1](/blog-assets/prologue-wasm_vs_docker_neko.svg)                       |
+| :---------------------------------------------------------------------------------------------------: |
+| \_The bars are not the right scale, as I found it hard to actually visualize < 1ms compared to 300ms+ |
 
 Furthermore, as they advertise on their own [webpage](https://www.fermyon.com/#fermyon-benefits) they saw that with Wasm modules they were able to trim down the resulting compiled image/binary down to ~1% of a comparable service packaged in Docker, from ~230MB -> 3.2MB!
 
@@ -50,4 +50,4 @@ I landed on this hypothesis for my thesis:
 
 Perhaps a lofty goal, but it leaves me a lot of room on what scope I end up with for the prototype I'm building this fall, and I'll go into more technical detail and the overall design in the next part!
 
-If you found this interesting, look out for the next chapter here: [Building Nebula - Chapter 1](/blog/nebula-chapter1)
+If you find this interesting, look out for the next chapter here: [Building Nebula - Chapter 1](/blog/nebula-chapter1)
