@@ -1,4 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite'
+import { purgeCss } from 'vite-plugin-tailwind-purgecss'
 import type { UserConfig } from 'vite'
 
 const config: UserConfig = {

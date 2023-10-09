@@ -1,10 +1,11 @@
 import { join } from 'path'
 import defaultTheme from 'tailwindcss/defaultTheme'
 import typography from '@tailwindcss/typography'
-import skeleton from '@skeletonlabs/skeleton/tailwind/skeleton.cjs'
+import { kluften } from './src/kluften'
+import { skeleton } from '@skeletonlabs/tw-plugin'
+import { Config } from 'tailwindcss'
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
 	darkMode: 'class',
 	content: [
 		'./src/**/*.{html,js,svelte,ts}',
@@ -30,5 +31,14 @@ module.exports = {
 			}
 		}
 	},
-	plugins: [typography, ...skeleton()]
-}
+	plugins: [
+		typography,
+		skeleton({
+			themes: {
+				custom: [kluften]
+			}
+		})
+	]
+} satisfies Config
+
+export default config
