@@ -16,6 +16,6 @@ export default [
 		slug: 'nebula_chapter0',
 		published: 'October 9, 2023',
 		title: 'Building Nebula - Prologue',
-		description: 'Detailing the background for my master thesis project Nebula'
+		description: "My master thesis' backstory, building a FaaS prototype"
 	}
 ] as BlogMeta
