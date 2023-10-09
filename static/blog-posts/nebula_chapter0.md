@@ -2,20 +2,21 @@
 
 A Function-as-a-Service platform powered by WebAssembly and WASI
 
-Don't shoot me if you've seen this quote plastered everywhere:
+You've probably already seen this quote everywhere:
 
 > If WASM+WASI existed in 2008, we wouldn't have needed to created Docker.
 > That's how important it is. Webassembly on the server is the future of
 > computing. A standardized system interface was the missing link. Let's hope
 > WASI is up to the task!
+> [_Solomon Hykes, founder of Docker_](https://twitter.com/solomonstre/status/1111004913222324225?lang=en)
 
 But, I'm currently exploring this premise and working on building a FaaS prototype that exclusively runs WebAssembly modules in order to measure the potential computational savings that can be achieved, and consequently how much power can be saved on more efficient technologies for my master's thesis.
 
 I set out to compare how the current status quo, being FaaS platforms like AWS lambdas, Google Cloud Functions and Azure Functions, compares to a platform that quickly spins up Wasm modules, runs the requested function, and spins down again.
 
-> Note: this first blog post is mostly the background and motivation for building Nebula, if you want to jump straight to the technical implementation, you can start with Chapter 1 here: [Building Nebula - Chapter 1](/blog/nebula-chapter1) (when it's out!)
+Note: this first blog post is mostly the background and motivation for building Nebula, if you want to jump straight to the technical implementation, you can start with Chapter 1 here: [Building Nebula - Chapter 1](/blog/nebula_chapter1) (when it's out!)
 
-## Why build a FaaS prototype?
+## Finding my Master thesis topic
 
 I'm building this prototype in order to perform some experiments for my Master's Thesis as part of my Master's degree in Programming and System Architecture at the University of Oslo.
 I initially started on this degree back in 2017, after achieving my bachelor's degree in Computer Engineering from OsloMet, but decided to jump off after the first semester when I got a job offer for working fulltime as a ServiceNow consultant.
@@ -25,29 +26,40 @@ At UiO there's a clear preference for "long" master theses, meaning that 50% of 
 In order to motivate myself to this undertaking that would occupy most of my free time, I decided to focus on what technologies I would like to see myself working on in the future, and was lucky enough to land a thesis project where I could dive into the Rust and WebAssembly ecosystem.
 
 I can attribute the initial idea for my master's thesis to the podcast episode ["Fermyon with Matt Butcher" from the Rustacaen Station Podcast](https://rustacean-station.org/episode/matt-butcher/).
-In this episode, Matt Butcher, the CEO of Fermyon goes in depth as to why they decided to startup a company focused on building a cloud platform that exclusively runs computations for its users on programs compiled to WebAssembly modules and uploaded to their cloud, either self-hosted, or on their Fermyon Cloud offering.
-In his explanation, he mentioned that they observed rather insane startup times compared to more typical container-based function-as-a-service offerings out there, going from comparable service in a Docker container taking **300ms+** just to start up, down to **sub 1ms** startup times for a comparable Wasm-module delivering the same functionality.
+Fermyon is a Cloud company that are heavily invested in the WebAssembly space, and in the episode Matt Butcher, the CEO of Fermyon, tells the story of how Fermyon came to be, and why they decided to build a Cloud platform that only allows developers to run programs that can be compiled to WebAssembly.
+In his explanation, he mentioned that they observed rather insane startup times compared to more typical container based function-as-a-service offerings out there, going from comparable service in a Docker container taking **300ms+** just to start up, down to **sub 1ms** startup times for a comparable Wasm module delivering the same functionality.
 
-|                       ![Graph 1](/blog-assets/prologue-wasm_vs_docker_neko.svg)                       |
-| :---------------------------------------------------------------------------------------------------: |
-| \_The bars are not the right scale, as I found it hard to actually visualize < 1ms compared to 300ms+ |
+![Graph 1](/blog-assets/prologue-wasm_vs_docker_neko.svg)
 
-Furthermore, as they advertise on their own [webpage](https://www.fermyon.com/#fermyon-benefits) they saw that with Wasm modules they were able to trim down the resulting compiled image/binary down to ~1% of a comparable service packaged in Docker, from ~230MB -> 3.2MB!
+Furthermore, as they advertise on their own [webpage](https://www.fermyon.com/#fermyon-benefits) they saw that with Wasm modules they were able to achieve image/binary sizes down to ~1% of a comparable service packaged in Docker, from 230MB -> 3.2MB!
 
-| ![Graph 2](/blog-assets/prologue-wasm_vs_docker_neko_size.svg) |
-| :------------------------------------------------------------: |
-|            \_Same issue with the scale here as well            |
+![Graph 2](/blog-assets/prologue-wasm_vs_docker_neko_size.svg)
 
-## Motivation
+## Why build a FaaS prototype?
 
-This sounded insane to me, and the amazing work Fermyon and the WebAssembly community is doing to spur the "third wave of cloud computing"
-motivated me to wanting to explore how much power we might be able to save if we, as an industry, move towards more efficient technologies to power our cloud.
+These metrics sounded pretty wild to me, and the amazing work Fermyon and the WebAssembly community is doing to get the "third wave of cloud computing" to wash over us
+motivated me to want to explore how much power we might be able to save if we, as an industry, move towards more efficient technologies to power our cloud.
 
-I landed on this hypothesis for my thesis:
+As a result of this, and with help from my supervisors at my University, I landed on the following hypothesis for my thesis:
 
 > It is possible to develop a Pure FaaS platform that scale to near-zero
 > resource usage, using WebAssembly modules
 
 Perhaps a lofty goal, but it leaves me a lot of room on what scope I end up with for the prototype I'm building this fall, and I'll go into more technical detail and the overall design in the next part!
 
-If you find this interesting, look out for the next chapter here: [Building Nebula - Chapter 1](/blog/nebula-chapter1)
+## Building a "Pure" FaaS
+
+As you might notice from the hypothesis, I have the term "Pure" placed before "FaaS", meaning that for the prototype I would like to scope down to experimenting on how a FaaS platform that only allow pure functions to be run on it might look like and perform.
+
+A pure function is commonly defined as:
+
+> A pure function is a function that, given the same input, will always return the same output and does not have any observable side effect. [Mostly Adequate](https://github.com/MostlyAdequate/mostly-adequate-guide/blob/master/ch03.md#oh-to-be-pure-again)
+
+With this restriction in place, I can expect that the same input to a function will always produce the same input.
+This will allow me to explore some interesting orchestration and caching patterns for functions deployed to the platform. Like the following theoretical example:
+
+![Currying example](/blog-assets/pure-function-chain-example.svg)
+
+Of course, actually implementing a system that dynamic might end up blowing up the scope for my thesis, so I will probably focus on experimenting with pre-written functions running on the platform. We'll see!
+
+If you got this far, thanks for reading this! I'm excited about sharing more technical details down the line. Stick around for Chapter 1 where we'll delve deeper into Nebula. When it's up, you'll find the next chapter here: [Building Nebula - Chapter 1](/blog/nebula_chapter1)
