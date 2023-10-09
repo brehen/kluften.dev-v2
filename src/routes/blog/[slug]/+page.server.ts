@@ -1,20 +1,11 @@
 // src/routes/blog/[...slug].ts
-import fs from 'fs'
-import path from 'path'
 import type { PageServerLoad } from './$types'
 
-export const load: PageServerLoad = ({ params }) => {
-	const filePath = path.join(process.cwd(), 'blog-posts', `${params.slug}.md`)
-
-	if (!fs.existsSync(filePath)) {
-		return { status: 404, error: new Error('Post not found') }
-	}
-
-	const content = fs.readFileSync(filePath, 'utf-8')
+export const load: PageServerLoad = async ({ fetch, params }) => {
+	const post = await fetch(`/blog-posts/${params.slug}.md`)
+	const content = await post.text()
 
 	return {
-		props: {
-			content
-		}
+		content
 	}
 }
