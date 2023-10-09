@@ -48,7 +48,8 @@ Docker, tweeted this:
 > "If Wasm+WASI existed in 2008, we wouldn't have needed to create Docker.
 > That's how important it is. Webassembly on the server is the future of
 > computing. A standardized system interface was the missing link. Let's hope
-> WASI is up to the task!" - [Solomon Hykes](twitter)
+> WASI is up to the task!" -
+> [Solomon Hykes](https://twitter.com/solomonstre/status/1111004913222324225?lang=en)
 
 This quote foreshadowed a potential new wave of cloud computing.
 
