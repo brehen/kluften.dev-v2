@@ -5,10 +5,14 @@
 	// Finally, your application's global stylesheet (sometimes labeled 'app.css')
 	import '../app.css'
 	import '../keyframes.css'
+	import { dev } from '$app/environment'
+	import { inject } from '@vercel/analytics'
 	import Navbar from '$lib/components/navbar.svelte'
 	import linux from '$lib/assets/linux-1.png'
 	import gatsby from '$lib/assets/gatsby-1.png'
 	import neko from '$lib/assets/neko-traced.png'
+
+	inject({ mode: dev ? 'development' : 'production' })
 </script>
 
 <svelte:head>
