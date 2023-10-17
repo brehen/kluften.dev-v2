@@ -8,9 +8,9 @@ type BlogMeta = {
 export default [
 	{
 		slug: 'nebula_chapter1',
-		published: '',
+		published: 'October 17, 2023',
 		title: 'Building Nebula - Chapter 1',
-		description: 'Work in Progress'
+		description: 'Building a prototype with Rust'
 	},
 	{
 		slug: 'nebula_chapter0',
