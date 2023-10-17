@@ -44,7 +44,7 @@ body {
 }
 
 .prose a {
-	@apply anchor !text-warning-600-300-token;
+	@apply anchor text-warning-600-300-token;
 }
 
 .prose h1 {
@@ -92,6 +92,10 @@ body {
 
 .accordion-panel a {
 	@apply !text-warning-600;
+}
+
+.not-prose a {
+	@apply text-black bg-warning-300 !no-underline;
 }
 
 /* .a { */
