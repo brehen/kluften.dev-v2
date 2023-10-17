@@ -16,10 +16,12 @@
 		updateNavbarLimit(10)
 		setShouldSwapNavbar(true)
 
-		const headings = Array.from(section.querySelectorAll('h2'))
-		const sections = headings.map((h2) => ({
-			tagline: h2.innerText,
-			offset: h2.offsetTop
+		const h2s = Array.from(section.querySelectorAll('h2'))
+		const h3s = Array.from(section.querySelectorAll('h3'))
+		const headings = [...h2s, ...h3s]
+		const sections = headings.map((h) => ({
+			tagline: h.innerText,
+			offset: h.offsetTop
 		}))
 
 		window.addEventListener('scroll', () => {
@@ -45,7 +47,9 @@
 </script>
 
 <section
-	class="prose py-10 prose-h1:text-tertiary-600-300-token prose-h2:text-tertiary-600-300-token prose-a:text-warning-600-300-token"
+	class="prose py-10
+  prose-h1:text-tertiary-600-300-token prose-h2:text-tertiary-600-300-token prose-h3:text-tertiary-600-300-token
+  prose-a:text-warning-600-300-token dark:marker:text-white marker:text-slate-800"
 	bind:this={section}
 >
 	<SvelteMarkdown source={data.content} />
