@@ -5,10 +5,9 @@
 
 ![Rust + Wasm/Wasi](/blog-assets/rust_wasi.jpg)
 
-In the previous post,
-[Building Nebula - Prologue](/blog-posts/nebula_chapter0.md), I laid out the
-motivations behind Nebula - a FaaS prototype designed to explore the power of
-WebAssembly. Let's dive into the "how".
+In the previous post, [Building Nebula - Prologue](/blog/nebula_chapter0), I
+laid out the motivations behind Nebula - a FaaS prototype designed to explore
+the power of WebAssembly. Let's dive into the "how".
 
 ## A journey beyond JavaScript
 
@@ -68,35 +67,28 @@ modules as functions, the road to getting there includes many steps. As of
 writing this, I already have a simple prototype working, and I'll try to lay out
 my journey to landing there.
 
-### Tech stack
+### Choosing the WebAssembly Runtime
 
-Part of my thesis work is performing a research on the status quo of what I'm
-intending to experiment on. Part of this led me to land on some key technologies
-for major parts of my architecture, while leaving some space for more
-flexibility on aspects that are less important - for example how I'm going to
-serve the platform.
+For running Wasm modules on the platform, it's crucial to have a reliable
+WebAssembly runtime. There's a plethora of options available: Wasmer, Wasmo,
+Wasmi, WasmEdge, and Wasmtime to name a few. My research led me to notice that
+Fermyon had opted for Wasmtime. After a deep dive into Wasmtime, I was impressed
+by their well-documented Rust crate, allowing me to effortlessly integrate
+Wasmtime into my Rust project. A pleasant surprise was realizing that the final
+binary build didn't necessitate having the wasmtime runtime installed on my
+server.
 
-#### Runtime
+### Designing the Web Server Infrastructure
 
-In order to run Wasm modules on the platform, a WebAssembly runtime is required.
-There are many options, like Wasmer, Wasmo, Wasmi, WasmEdge and Wasmtime. Among
-these, I noticed that Fermyon landed on Wasmtime. After digging into the
-project, I found they have a well documented Rust crate that I can install into
-my project and spin up Wasmtime in a rust program. After some experimenting, I
-discovered that I don't even need to install the wasmtime runtime on my server
-in order to make it work in the final binary build.
+While the choice of WebAssembly runtime was crucial, the actual mechanism to
+serve and interact with these modules was equally vital. How do industry giants
+do it? Amazon with their Lambda, Google with Cloud Functions, or Microsoft with
+Azure Functions? Without the exact blueprint, I decided on crafting a feasible
+solution for my experimentation: a web server using Rust and Axum.
 
-#### A web server
-
-I'm not entirely sure how Amazon builds their Lambda, Google their Cloud
-Functions or Microsoft their Azure Functions, but in order to build a platform
-that is feasible to start performing experiments on, I decided to make a web
-server with Rust, which uses the Wasmtime rust crate in order to load and run
-functions compiled to WebAssembly.
-
-For sake of simplicity, I got a couple of VM's running Debian from my schools
-OpenStack/IaaC platform, which lets me prototype my platform on another device
-than my M2 Max max.
+The backbone of this server includes a shared crate library. This library acts
+as the bridge between the web server and the Wasmtime runtime. The envisioned
+workflow is simple:
 
 In my sketch below, I've drawn up a rough idea of what I want the platform to do
 in the first iteration.
@@ -113,7 +105,8 @@ in the first iteration.
 4. The web server responds the user with the value returned from the wasm
    module.
 5. ????
-6. Neko is a happy dog, because he got 10 treats at BLAZINGLY fast speeds!
+6. Neko is a happy dog, because he got 10 treats at (hopefully) BLAZINGLY fast
+   speeds!
 
 ### Humble beginnings
 
@@ -159,8 +152,10 @@ Smells like victory!
 
 ## Closing words
 
-Now you might be wondering "We've gone through 2 blog posts and haven't seen
-anything actually related to WebAssembly, what gives??", and don't worry, we'll
-get to that in the next chapter!
+Now you might be wondering: "Wait. What happened with steps 2 through 6? Neko
+ain't getting no treats with this rudimentary Hello World web server?? What
+gives??".
+
+Great question! We'll explore that further in the next chapter!
 
 See you in [Building Nebula - Chapter 2](/blog/nebula_chapter2)
