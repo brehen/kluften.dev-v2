@@ -1,4 +1,4 @@
-# Building Nebula - Prologue
+# Building Nebula - Prologue: A beginning
 
 > A Function-as-a-Service platform powered by WebAssembly, built with Rust
 
