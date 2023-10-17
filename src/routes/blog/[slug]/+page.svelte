@@ -8,6 +8,7 @@
 	import SvelteMarkdown from 'svelte-markdown'
 	import type { PageData } from './$types'
 	import Feedback from '$lib/components/feedback.svelte'
+	import CodeRender from '$lib/components/CodeRender.svelte'
 
 	let section: HTMLElement
 	export let data: PageData
@@ -48,11 +49,15 @@
 
 <section
 	class="prose py-10
-  prose-h1:text-tertiary-600-300-token prose-h2:text-tertiary-600-300-token prose-h3:text-tertiary-600-300-token
   prose-a:text-warning-600-300-token dark:marker:text-white marker:text-slate-800"
 	bind:this={section}
 >
-	<SvelteMarkdown source={data.content} />
+	<SvelteMarkdown
+		source={data.content}
+		renderers={{
+			code: CodeRender
+		}}
+	/>
 	<hr />
 	<Feedback />
 	<hr />
@@ -61,5 +66,9 @@
 <style>
 	:global(section > p > img) {
 		margin-inline: auto;
+	}
+
+	:global(.prose h1, h2, h3, h4) {
+		@apply text-tertiary-600-300-token;
 	}
 </style>
