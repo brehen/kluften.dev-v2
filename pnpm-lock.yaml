@@ -79,6 +79,9 @@ devDependencies:
   svelte-check:
     specifier: ^3.5.2
     version: 3.5.2(postcss@8.4.31)(svelte@4.2.1)
+  svelte-highlight:
+    specifier: ^7.4.1
+    version: 7.4.1
   tailwindcss:
     specifier: ^3.3.3
     version: 3.3.3
@@ -2538,6 +2541,12 @@ packages:
       postcss-scss: 4.0.9(postcss@8.4.31)
       svelte: 4.2.1
     dev: false
+
+  /svelte-highlight@7.4.1:
+    resolution: {integrity: sha512-ZjPUQn16bESqmzXzrQXfWKidwUabHNxysGIOUdbsxqBtDe8s33V9z6K697sszQITQ9k6hrMUpTICWLm2GIW5xQ==}
+    dependencies:
+      highlight.js: 11.9.0
+    dev: true
 
   /svelte-hmr@0.15.3(svelte@4.2.1):
     resolution: {integrity: sha512-41snaPswvSf8TJUhlkoJBekRrABDXDMdpNpT2tfHIv4JuhgvHqLMhEPGtaQn0BmbNSTkuz2Ed20DF2eHw0SmBQ==}
