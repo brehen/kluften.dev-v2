@@ -10,14 +10,16 @@
 	})
 </script>
 
-<div class="flex items-start justify-center gap-4">
+<div class="flex items-start justify-around gap-4 w-full">
 	<img src={neko} alt="" class="w-20 my-0" />
-	<div>
-		<p class="mb-0 mt-8">Got any feedback?</p>
-		<p class="mt-0">
-			I'd love to hear from you here:
-			<a href={`mailto:feedback@kluften.dev?subject=Feedback ${title}`}> feedback@kluften.dev </a>
-		</p>
+	<div class="not-prose">
+		<p class="my-4 text-center">Got any feedback?</p>
+		<a
+			class="px-3 py-2 bg-warning-300 rounded-md dark:!text-black not-prose no-underline"
+			href={`mailto:feedback@kluften.dev?subject=Feedback ${title}`}
+		>
+			I'd love to hear from you!
+		</a>
 	</div>
 	<img src={gatsby} alt="" class="w-24 my-0 self-center" />
 </div>
