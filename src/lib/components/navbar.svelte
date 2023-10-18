@@ -33,11 +33,11 @@
 <header>
 	<div
 		class={[
-			'fixed z-[999] w-full flex justify-center h-nav px-4 md:px-8 py-4 transition-all',
+			'fixed z-[999] w-full flex justify-center h-20 px-4 md:px-8 py-4 transition-all',
 			onSide ? 'bg-surface-100-800-token md:!bg-transparent' : 'bg-surface-100-800-token'
 		].join(' ')}
 	>
-		<div class="flex items-center justify-between w-full max-w-5xl">
+		<div class="flex items-center justify-between w-full max-w-5xl relative">
 			<div class="relative">
 				<a href="/" class="flex gap-4 items-end !text-primary-900-50-token leading-none">
 					<Logo />
@@ -61,14 +61,14 @@
 					</div>
 				{/if}
 			</div>
+			<nav
+				class="border-t-black border-t-2 md:border-none fixed md:relative flex gap-8 justify-between md:w-fit w-full bottom-0 left-0 md:!bg-transparent bg-surface-100-800-token p-4"
+			>
+				<a href="/blog" class="!text-warning-600-300-token">blog</a>
+				<LightSwitch />
+			</nav>
 		</div>
 	</div>
-	<nav
-		class="border-t-black border-t-2 md:border-none fixed z-[999] w-full md:w-fit bottom-0 md:bottom-[unset] md:top-0 md:right-0 flex justify-end !text-warning-600-300-token p-4 bg-surface-100-800-token gap-8 text-xl"
-	>
-		<a href="/blog">blog</a>
-		<LightSwitch />
-	</nav>
 </header>
 
 <style>
