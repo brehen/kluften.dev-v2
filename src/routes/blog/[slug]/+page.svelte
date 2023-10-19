@@ -9,6 +9,7 @@
 	import type { PageData } from './$types'
 	import Feedback from '$lib/components/feedback.svelte'
 	import CodeRender from '$lib/components/CodeRender.svelte'
+	import { dev } from '$app/environment'
 
 	let section: HTMLElement
 	export let data: PageData
@@ -16,6 +17,8 @@
 	onMount(() => {
 		updateNavbarLimit(10)
 		setShouldSwapNavbar(true)
+	let isProd = !dev
+	let showArticleContent = (isProd && data.status === 'published') || !isProd
 
 		const h2s = Array.from(section.querySelectorAll('h2'))
 		const h3s = Array.from(section.querySelectorAll('h3'))
@@ -47,13 +50,18 @@
 	})
 </script>
 
+<svelte:head>
+	{#if data.canonicalUrl}
+		<link type="canonical" href={data.canonicalUrl} />
+	{/if}
+</svelte:head>
 <section
 	class="prose py-10
   prose-a:text-warning-600-300-token dark:marker:text-white marker:text-slate-800"
 	bind:this={section}
 >
 	<SvelteMarkdown
-		source={data.content}
+		source={showArticleContent ? content : '# Working on it!'}
 		renderers={{
 			code: CodeRender
 		}}
