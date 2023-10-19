@@ -9,14 +9,10 @@
 	import type { PageData } from './$types'
 	import Feedback from '$lib/components/feedback.svelte'
 	import CodeRender from '$lib/components/CodeRender.svelte'
+	import { page } from '$app/stores'
 	import { dev } from '$app/environment'
-
-	let section: HTMLElement
 	export let data: PageData
 
-	onMount(() => {
-		updateNavbarLimit(10)
-		setShouldSwapNavbar(true)
 	let isProd = !dev
 	let showArticleContent = (isProd && data.status === 'published') || !isProd
 
@@ -27,6 +23,11 @@
 	}
 
 	const content = insertDate(data.content)
+
+	let section: HTMLElement
+	let onScroll: () => void
+
+	const updateSectionsAndScrolls = () => {
 		const h2s = Array.from(section.querySelectorAll('h2'))
 		const h3s = Array.from(section.querySelectorAll('h3'))
 		const headings = [...h2s, ...h3s]
@@ -35,9 +36,10 @@
 			offset: h.offsetTop
 		}))
 
-		window.addEventListener('scroll', () => {
+		onScroll = () => {
+			// if (window.scrollY % 50 === 0) console.log(section)
 			const currentScrollY = window.scrollY
-			const triggerPoint = currentScrollY + window.innerHeight / 2 // Adjust this to control when the update triggers
+			const triggerPoint = currentScrollY + window.innerHeight / 2
 
 			const currentSection = sections.find((section, index) => {
 				const nextSection = sections[index + 1]
@@ -49,12 +51,25 @@
 			if (currentSection) {
 				setCurrentTagline(currentSection.tagline)
 			}
-		})
+		}
+	}
+
+	onMount(() => {
+		updateNavbarLimit(10)
+		setShouldSwapNavbar(true)
+
+		updateSectionsAndScrolls()
+
+		window.addEventListener('scroll', onScroll)
+		return () => {
+			window.removeEventListener('scroll', onScroll)
+			setShouldSwapNavbar(false)
+		}
 	})
 
-	onDestroy(() => {
-		setShouldSwapNavbar(false)
-	})
+	$: if (section) {
+		updateSectionsAndScrolls()
+	}
 </script>
 
 <svelte:head>
@@ -65,6 +80,7 @@
 <section
 	class="prose py-10
   prose-a:text-warning-600-300-token dark:marker:text-white marker:text-slate-800"
+	id={$page.url.toString()}
 	bind:this={section}
 >
 	<SvelteMarkdown
