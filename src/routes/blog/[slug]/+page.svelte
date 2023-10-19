@@ -20,6 +20,13 @@
 	let isProd = !dev
 	let showArticleContent = (isProd && data.status === 'published') || !isProd
 
+	const insertDate = (markup: string) => {
+		const [first, ...rest] = markup.split('\n')
+
+		return [first, '', `${data.published}`, ...rest].join('\n')
+	}
+
+	const content = insertDate(data.content)
 		const h2s = Array.from(section.querySelectorAll('h2'))
 		const h3s = Array.from(section.querySelectorAll('h3'))
 		const headings = [...h2s, ...h3s]
