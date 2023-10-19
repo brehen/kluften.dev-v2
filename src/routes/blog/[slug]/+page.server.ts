@@ -16,6 +16,7 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 	const content = await post.text()
 
 	return {
-		content
+		content,
+		...postIsPublished
 	}
 }
