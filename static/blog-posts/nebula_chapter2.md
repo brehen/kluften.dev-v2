@@ -1,8 +1,58 @@
-# Building Nebula - Chapter 2
+# Building Nebula - Chapter 2: Let's run some WebAssembly modules
 
-> Let's see some proper code
+> Getting up and running with Wasmtime on our Rust server
 
-![Rust + Wasm/Wasi](/blog-assets/rust_wasi.jpg)
+![A Shiba inu running](/blog-assets/shiba_running.jpg)
+
+## Some basic terminology
+
+In my previous two posts I mainly spent your time talking about why and how I'm
+building a Rust web server that can spin up WebAssembly modules in the
+background.
+
+"Isn't this just going to be a web server that spins up the wasmtime runtime in
+the background? Is that a Serverless Faas Platform?"
+
+...
+
+Yes. Yes that's what I'm making. And I'm not 100% sure if the terminology
+matches, but ChatGPT agrees with me!
+
+```chatgpt
+<p class="w-full bg-slate-200 rounded-t-lg text-black pl-4 py-2">
+  ChatGPT
+</p>
+
+<p class="text-lg font-bold pb-8 pt-8 px-8 grid grid-cols-[80px,1fr] bg-slate-800">
+  <img src="/blog-assets/neko-smile.png" class="h-16 mr-4" />
+  Could you define Nebula as a FaaS platform? It's essentially a glorified web
+  server that can spin up wasmtime in the background and run some WebAssembly
+  modules.
+</p>
+
+<span class="relative min-h-[0px] overflow-hidden flex rounded-b-lg text-green-300">
+  <span class="w-[200%] grid grid-rows-[100%,100%] bg-slate-900" id="wrapper">
+    <p class="w-full grid grid-cols-[80px,1fr] hide p-8 h-fit" id="second">
+      <img src="/blog-assets/gatsby-hmm.png" class="h-12 w-12 ml-4" alt="gatsby avatar" />
+      Certainly! FaaS, or "Function as a Service," is a category of cloud services that allows developers
+      to run individual functions in response to events without the complexity of building and maintaining
+      the infrastructure.<br /><br />
+      Your prototype seems to fit into this category. It takes an HTTP request and then runs a specific
+      WebAssembly module in response. The logic encapsulated within the WebAssembly module can be seen
+      as the "function" in "Function as a Service."<br /><br />
+      It's worth noting, though, that traditional FaaS platforms offer more features like auto-scaling,
+      monitoring, logging, and more, which you might not have in your prototype. However, calling it
+      a "basic FaaS platform" or a "prototype FaaS platform" for WebAssembly is certainly appropriate
+      given its functionality.
+    </p>
+    <p class="w-full grid grid-cols-[80px,1fr] p-8 h-fit invisible" id="first">
+      <img src="/blog-assets/gatsby-hmm.png" class="h-12 w-12 mr-4" alt="gatsby avatar" />
+      Yes. Don't worry about it, that's what all other FaaS platforms are anyway, you go champ 🔥 🙏
+      🏃
+    </p>
+  </span>
+</span>
+```
 
 ```rust
 #[tokio::main]
