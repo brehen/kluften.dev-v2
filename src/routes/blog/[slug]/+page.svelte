@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onDestroy, onMount } from 'svelte'
+	import { onMount } from 'svelte'
 	import {
 		setCurrentTagline,
 		setShouldSwapNavbar,
@@ -9,6 +9,7 @@
 	import type { PageData } from './$types'
 	import Feedback from '$lib/components/feedback.svelte'
 	import CodeRender from '$lib/components/CodeRender.svelte'
+	import LinkRender from '$lib/components/LinkRender.svelte'
 	import { page } from '$app/stores'
 	import { dev } from '$app/environment'
 	export let data: PageData
@@ -25,32 +26,25 @@
 	const content = insertDate(data.content)
 
 	let section: HTMLElement
-	let onScroll: () => void
+	let sections: {
+		tagline: string
+		offset: number
+	}[]
 
-	const updateSectionsAndScrolls = () => {
-		const h2s = Array.from(section.querySelectorAll('h2'))
-		const h3s = Array.from(section.querySelectorAll('h3'))
-		const headings = [...h2s, ...h3s]
-		const sections = headings.map((h) => ({
-			tagline: h.innerText,
-			offset: h.offsetTop
-		}))
+	const onScroll = () => {
+		if (window.scrollY % 50 === 0) console.log(sections)
+		const currentScrollY = window.scrollY
+		const triggerPoint = currentScrollY + window.innerHeight / 2
 
-		onScroll = () => {
-			// if (window.scrollY % 50 === 0) console.log(section)
-			const currentScrollY = window.scrollY
-			const triggerPoint = currentScrollY + window.innerHeight / 2
+		const currentSection = sections.find((section, index) => {
+			const nextSection = sections[index + 1]
+			return nextSection
+				? triggerPoint >= section.offset && triggerPoint < nextSection.offset
+				: triggerPoint >= section.offset
+		})
 
-			const currentSection = sections.find((section, index) => {
-				const nextSection = sections[index + 1]
-				return nextSection
-					? triggerPoint >= section.offset && triggerPoint < nextSection.offset
-					: triggerPoint >= section.offset
-			})
-
-			if (currentSection) {
-				setCurrentTagline(currentSection.tagline)
-			}
+		if (currentSection) {
+			setCurrentTagline(currentSection.tagline)
 		}
 	}
 
@@ -58,18 +52,21 @@
 		updateNavbarLimit(10)
 		setShouldSwapNavbar(true)
 
-		updateSectionsAndScrolls()
+		const h2s = Array.from(section.querySelectorAll('h2'))
+		const h3s = Array.from(section.querySelectorAll('h3'))
+		const headings = [...h2s, ...h3s]
+		sections = headings.map((h) => ({
+			tagline: h.innerText,
+			offset: h.offsetTop
+		}))
 
 		window.addEventListener('scroll', onScroll)
 		return () => {
+			setCurrentTagline('')
 			window.removeEventListener('scroll', onScroll)
 			setShouldSwapNavbar(false)
 		}
 	})
-
-	$: if (section) {
-		updateSectionsAndScrolls()
-	}
 </script>
 
 <svelte:head>
@@ -86,7 +83,8 @@
 	<SvelteMarkdown
 		source={showArticleContent ? content : '# Working on it!'}
 		renderers={{
-			code: CodeRender
+			code: CodeRender,
+			link: LinkRender
 		}}
 	/>
 	<hr />
