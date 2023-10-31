@@ -42,12 +42,11 @@
 	})
 </script>
 
-{selected}
-<div class="mb8 relative mb-[500px]" bind:this={block}>
+<div class="relative mb-8" bind:this={block}>
 	<SvelteMarkdown source={text} />
 
 	<div class="flex justify-end pt-4">
-		<button on:click={swapParagraph} class="bg-pink-300 text-stone-900 rounded-lg px-8 py-4">
+		<button on:click={swapParagraph} class="bg-pink-300 text-stone-900 rounded-lg px-4 py-2">
 			♻️ Regenerate
 		</button>
 	</div>
