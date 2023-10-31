@@ -10,30 +10,31 @@ In my previous two posts I mainly spent your time talking about why and how I'm
 building a Rust web server that can spin up WebAssembly modules in the
 background.
 
-"Isn't this just going to be a web server that spins up the wasmtime runtime in
-the background? Is that a Serverless Faas Platform?"
+### "Isn't this just going to be a web server that spins up the wasmtime runtime in the background? Is that a Serverless Faas Platform?"
 
 ...
 
 Yes. Yes that's what I'm making. And I'm not 100% sure if the terminology
-matches, but ChatGPT agrees with me!
+matches, but ChatGPT seems to agree with me!
+
+("Regenerate" the answer to get the actual answer.)
 
 ```chatgpt
 <p class="w-full bg-slate-200 rounded-t-lg text-black pl-4 py-2">
   ChatGPT
 </p>
 
-<p class="text-lg font-bold pb-8 pt-8 px-8 grid grid-cols-[80px,1fr] bg-slate-800">
+<p class="text-lg font-bold p-4 md:p-8 grid grid-cols-[50px,1fr] gap-2 bg-slate-800">
   <img src="/blog-assets/neko-smile.png" class="h-16 mr-4" />
   Could you define Nebula as a FaaS platform? It's essentially a glorified web
-  server that can spin up wasmtime in the background and run some WebAssembly
+  server that can spin up wasmtime in the background and runs some WebAssembly
   modules.
 </p>
 
 <span class="relative min-h-[0px] overflow-hidden flex rounded-b-lg text-green-300">
-  <span class="w-[200%] grid grid-rows-[100%,100%] bg-slate-900" id="wrapper">
-    <p class="w-full grid grid-cols-[80px,1fr] hide p-8 h-fit" id="second">
-      <img src="/blog-assets/gatsby-hmm.png" class="h-12 w-12 ml-4" alt="gatsby avatar" />
+  <span class="w-[200%] grid grid-rows-[100%,100%] gap-2 bg-slate-900" id="wrapper">
+    <p class="w-full grid grid-cols-[50px,1fr] hide p-4 md:p-8 h-fit" id="second">
+      <img src="/blog-assets/gatsby-hmm.png" class="h-12 w-12" alt="gatsby avatar" />
       Certainly! FaaS, or "Function as a Service," is a category of cloud services that allows developers
       to run individual functions in response to events without the complexity of building and maintaining
       the infrastructure.<br /><br />
@@ -45,7 +46,7 @@ matches, but ChatGPT agrees with me!
       a "basic FaaS platform" or a "prototype FaaS platform" for WebAssembly is certainly appropriate
       given its functionality.
     </p>
-    <p class="w-full grid grid-cols-[80px,1fr] p-8 h-fit invisible" id="first">
+    <p class="w-full grid grid-cols-[50px,1fr] gap-2 p-4 pb-6 md:p-8 h-fit invisible" id="first">
       <img src="/blog-assets/gatsby-hmm.png" class="h-12 w-12 mr-4" alt="gatsby avatar" />
       Yes. Don't worry about it, that's what all other FaaS platforms are anyway, you go champ 🔥 🙏
       🏃
@@ -53,6 +54,38 @@ matches, but ChatGPT agrees with me!
   </span>
 </span>
 ```
+
+So. Now that we've ensured that what I'm trying to build could be called a "FaaS
+Platform", even though it is a bit limited, without auto-scaling, monitoring,
+logging and more. For the sake of experimentation, some of these features should
+be implemented in some shape or form. The dream is to read power consumption
+from the server during each function call, and attempt to measure the
+"footprint" for each function, but we'll see how far I'll get.
+
+### "Hey, what even are WebAssembly modules?"
+
+![Wait a minute, who are you meme kid looking at the Wasm Logo](/blog-assets/what-even-are-wasm-modules.jpg)
+
+Great question, me!
+
+I've spent a lot of words the past few blog posts laying out my plans for
+building Nebula to run Wasm modules as functions, but I never explained beyond
+"wow, quick startup times and small package sizes."
+
+Giving a thorough description of the magic of WebAssembly modules might be a bit
+out of scope for this blog post, but I'll try to give a short and sweet
+description.
+
+WebAssembly, or Wasm for short, is like a universal language for computer
+programs. Imagine you wrote down a recipe, and no matter where you went in the
+world, everyone could understand and cook it without a translator. That's Wasm
+for code. It allows programs to run everywhere, and even though it was first
+designed for the browser, it's design made it a perfect fit for servers as well.
+
+For the sake of Nebula, WebAssembly modules are these recipes, ready to be
+whipped up and served in moments!
+
+![Let the damn dog cook](/blog-assets/let_neko_cook.jpeg)
 
 ```rust
 #[tokio::main]
