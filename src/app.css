@@ -71,6 +71,11 @@ body {
 	@apply h6;
 }
 
+.prose table {
+	width: fit-content;
+	margin-inline: auto;
+}
+
 .prose strong {
 	@apply font-bold text-primary-900 dark:text-white;
 }
