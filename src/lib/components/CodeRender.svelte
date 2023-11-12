@@ -9,6 +9,8 @@
 <div class="not-prose">
 	{#if lang === 'chatgpt'}
 		<ChatGptRender {text} />
+	{:else if lang === 'shell'}
+		<CodeBlock language={lang} code={text} />
 	{:else}
 		<CodeBlock language={lang} code={text} lineNumbers />
 	{/if}
