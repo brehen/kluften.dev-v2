@@ -1,6 +1,6 @@
-# Building Nebula - Chapter 2: Let's run some WebAssembly modules
+# Building Nebula - Chapter 2: Let's write some Wasm/Wasi modules
 
-> Getting up and running with Wasmtime on our Rust server
+> Some actual code examples
 
 ![A Shiba inu running](/blog-assets/shiba_running.jpg)
 
@@ -10,12 +10,13 @@ In my previous two posts I mainly spent your time talking about why and how I'm
 building a Rust web server that can spin up WebAssembly modules in the
 background.
 
-### "Isn't this just going to be a web server that spins up the wasmtime runtime in the background? Is that a Serverless Faas Platform?"
+> Isn't this just going to be a web server that spins up the wasmtime runtime in
+> the background? Is that a Serverless Faas Platform?
 
 ...
 
-Yes. Yes that's what I'm making. And I'm not 100% sure if the terminology
-matches, but ChatGPT seems to agree with me!
+Yes. Yes, that is what I'm making. And I'm not 100% sure if the terminology
+matches, but I checked with ChatGPT and got the green card.
 
 ("Regenerate" the answer to get the actual answer.)
 
@@ -33,7 +34,7 @@ matches, but ChatGPT seems to agree with me!
 
 <span class="relative min-h-[0px] overflow-hidden flex rounded-b-lg text-green-300">
   <span class="w-[200%] grid grid-rows-[100%,100%] gap-2 bg-slate-900" id="wrapper">
-    <p class="w-full grid grid-cols-[50px,1fr] hide p-4 md:p-8 h-fit" id="second">
+    <p class="w-full grid grid-cols-[50px,1fr] gap-2 hide p-4 md:p-8 h-fit" id="second">
       <img src="/blog-assets/gatsby-hmm.png" class="h-12 w-12" alt="gatsby avatar" />
       Certainly! FaaS, or "Function as a Service," is a category of cloud services that allows developers
       to run individual functions in response to events without the complexity of building and maintaining
@@ -62,7 +63,7 @@ be implemented in some shape or form. The dream is to read power consumption
 from the server during each function call, and attempt to measure the
 "footprint" for each function, but we'll see how far I'll get.
 
-### "Hey, what even are WebAssembly modules?"
+### "Hey, what even are Wasm/Wasi modules?"
 
 ![Wait a minute, who are you meme kid looking at the Wasm Logo](/blog-assets/what-even-are-wasm-modules.jpg)
 
@@ -76,188 +77,117 @@ Giving a thorough description of the magic of WebAssembly modules might be a bit
 out of scope for this blog post, but I'll try to give a short and sweet
 description.
 
-WebAssembly, or Wasm for short, is like a universal language for computer
-programs. Imagine you wrote down a recipe, and no matter where you went in the
-world, everyone could understand and cook it without a translator. That's Wasm
-for code. It allows programs to run everywhere, and even though it was first
-designed for the browser, it's design made it a perfect fit for servers as well.
+**WebAssembly**, or **Wasm** for short, is like a universal language for
+computer programs. Imagine you wrote down a recipe, and no matter where you went
+in the world, everyone could understand and cook it without a translator. That's
+Wasm for code. It allows programs to run everywhere, and even though it was
+first designed for the browser, it's design made it a perfect fit for servers as
+well.
 
-For the sake of Nebula, WebAssembly modules are these recipes, ready to be
-whipped up and served in moments!
+The **WebAssembly System Interface**, or **Wasi** for short, is project that
+aims to package our Wasm code in such a way that it can interface with an
+underlying system, and this is what enables us to run Wasm on our servers and
+allow us to actual server things.
 
-![Let the damn dog cook](/blog-assets/let_neko_cook.jpeg)
+For the sake of Nebula, Wasm/Wasi modules are these recipes, ready to be whipped
+up and served in an instant on our server!
 
-```rust
-#[tokio::main]
-use std::net::{IpAddr, SocketAddr};
-use axum::{routing::get, Router};
-use nebula_server::utilities::{
-    run_wasm_module::{run_wasm_module},
-};
+| ![An illustration of an AI generated Shiba Inu chef cooking with WebAssembly, Rust and Wasi spices, cooking Nebula.](/blog-assets/let_neko_cook.jpeg) |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                                _Introducing: the logo_                                                                |
 
+## Some actual code
 
-async fn main() {
-    let app = Router::new()
-        .route(
-            "/",
-            get(|| async { "
-              <!DOCTYPE html>
-              <html>
-                <body>
-                  <div>Hei Simen!<br><br>Hvordan går det? :)</div>
-                </body>
-              </html>" 
-            }
-          ),
-        )
-        .route(
-            "/wasm/:module/:input",
-            get(run_wasm_module),
-        );
-
-    // run it with hyper on localhost:3000
-    axum::Server::bind(&SocketAddr::new("127.0.0.1", "8080"))
-        .serve(app.into_make_service())
-        .await
-        .unwrap();
-}
-```
-
-The root page looked like this:
+As I wrote in the previous post, I'm currently faced with this rather simple
+"Hello Simen" web page, which doesn't even render HTML properly.
 
 ![First "html" iteration](/blog-assets/first_landing_page.jpg)
 
-While maybe not an technically impressive web page, and I'd expect more from my
-self after 6 years of web development, I still had managed to get a web server
-in something other than Node and Express up and running!
+In this chapter we'll look at how we can move from responding with plain text,
+and hopefully manage to run some functions compiled to WebAssembly that we can
+run upon request. Let's start with writing our first WebAssembly module! I am
+developing this platforms within the confines of Academia, so I'll start with
+the most useful calculation I can think of. Fibonacci!
 
-Smells like victory!
+### Why Fibonacci?
 
-### Spinning up a wasm module
+In the famous sequence dubbed the "Fibonacci sequence", every number in the
+sequence is the sum of the two numbers preceding it in the sequence.
 
-I have a GET end point in my app router, which routes users that hit
-/wasm/:module/:input to the following function:
+Fib(0) is 0, Fib(1) is 1, Fib(2) is also 1, because 0 + 1 = 1. Fib(3) is 2 (1+1)
+and Fib(4) is 3 (2+1). FibSequence(4) results in the sequence [0, 1, 1, 2, 3].
+This sequence goes on and on, and the number we're able to get out is only
+limited by the maximum number we type it to be.
+
+| ![Neko stylised as the mathematician Fibonacci](/blog-assets/nekonacci.jpg) |
+| :-------------------------------------------------------------------------: |
+|                            _Nice sequence, bro_                             |
+
+This gets more interesting when we to a much larger number n in the sequence. I
+haven't found much use of this in my day to day, but it will serve as a nice way
+to attempt to stump the computer while benchmarking in the future, to see how
+Nebula behaves when under load.
+
+The actual thesis I applied for back in 2022 that my supervisors had advertised
+was named "Academemes.com - Experiment on new ways to develop Cloud Native
+Applications while testing them out serving academic memes." So I might
+implement some "zany memey 🤪" functions down the road, but for now I'm sticking
+with simple functions that I can write in Rust and compile to Wasi modules.
+
+Here's what I ended up with:
 
 ```rust
-// src/utilities/run_wasm_module.rs
-use axum::{extract::Path, response::Html};
-use nebula_lib::wasm_runner::{self};
-use serde::Deserialize;
-use super::get_file_path::get_file_path;
+fn fibonacci(size: i32) -> Vec<u64> { 
+    let mut sequence = Vec::<u64>::new();
 
-#[derive(Deserialize)]
-pub struct Params {
-    module: String,
-    input: String,
-}
-
-pub async fn run_wasm_module(
-    Path(Params { module, input }): Path<Params>
-  ) -> Html<String> {
-    // Gets pwd to module passed as input
-    let file_path = get_file_path(&module);
-
-    // Call run_wasi_module function from nebula_lib
-    match wasm_runner::run_wasi_module(&file_path, &input) {
-        Ok(result) => Html(format!(
-            "<div><h1>{}, input: {}</h1><p>Result was: {}</p><p>Startup time: {}</p><Total runtime: {}</p></div>",
-            module, input, result.result, result.metrics.startup_time, result.metrics.total_runtime
-        )),
-        // Provide error message and reason. F.ex. if user provides faulty input.
-        Err(err) => Html(format!(
-            "<p>Whoops! Error!</p> <p style=\"color:red;\">{}</p>",
-            err.to_string()
-        )),
+    for i in 0..size {
+        let j = i as usize;
+        if i == 0 || i == 1 {
+            sequence.push(i as u64);
+        } else {
+            let next_value = sequence[j - 1] + sequence[j - 2];
+            sequence.push(next_value);
+        }
     }
+
+    // println!("Help me");
+
+    sequence
+
 }
 ```
 
-### Creating a shared library
+<p class="text-right mt-2 mr-2">
+  <a href="https://github.com/brehen/nebula/blob/v0.2/functions/fibonacci/src/main.rs">
+    [Source]
+  </a>
+</p>
 
-In order to honor separation of concern, I decided to create a separate lib
-cargo crate that lives next to my web_server crate. In doing this, I don't have
-to think about the wasmtime runtime in my web_server, and allows me to re-use it
-in other projects if I find it fruitful in the future.
+Now, we can build it with wasm32-wasi as the target, provide the --release flag
+and watch it compile our rust code into a Wasi binary file:
+
+```shell
+$ cargo build --target wasm32-wasi --release
+
+    Compiling fibonacci v0.1.0 (~/nebula/functions/fibonacci)
+      Finished release [optimized] target(s) in 1.07s
+```
+
+This results in a fibonacci.wasm in the projects target/wasm32-wasi/release
+folder that we could theoretically upload as a file to a platform and run.
+
+![Wasm binary file in Finder](/blog-assets/wasm_binary.jpg)
+
+But in order to run this fibonacci function with a given output and receive an
+expected output, we need to write some more code!
+
+![Wasm binary in finder](/blog-assets/wasm)
+
+### Wrapping the function into a Wasi module
+
+Due to my limited experience and knowledge of the Rust ecosystem and
+specifically the [Wasmtime crate](https://wasmtime.dev/) I struggled to get my
+example up and running.
 
 ```rust
-//! Example of instantiating a wasm module which uses WASI imports.
-
-use std::{path::PathBuf, time::Instant};
-
-use anyhow::Result;
-use wasi_common::pipe::{ReadPipe, WritePipe};
-
-use wasmtime::*;
-use wasmtime_wasi::sync::WasiCtxBuilder;
-
-use crate::models::{FunctionResult, Metrics};
-
-pub fn run_wasi_module(path: &PathBuf, input: &str) -> Result<FunctionResult, anyhow::Error> {
-    // 1. *
-    let start = Instant::now();
-    // Define the WASI functions globally on the `Config`.
-    let engine = Engine::default();
-    let mut linker = Linker::new(&engine);
-
-    wasmtime_wasi::add_to_linker(&mut linker, |s| s)?;
-
-    // 2. *
-    let stdin = ReadPipe::from(input);
-    let stdout = WritePipe::new_in_memory();
-
-    // Create a WASI context and put it in a Store; all instances in the store
-    // share this context. `WasiCtxBuilder` provides a number of ways to
-    // configure what the target program will have access to.
-    let wasi = WasiCtxBuilder::new()
-        .stdin(Box::new(stdin.clone()))
-        .stdout(Box::new(stdout.clone()))
-        .build();
-
-    let mut store = Store::new(&engine, wasi);
-
-    // Instantiate our module with the imports we've created, and run it.
-    let module = Module::from_file(&engine, path)?;
-
-    let startup_time = start.clone().elapsed().as_millis();
-
-    linker
-        .module(&mut store, "", &module)
-        .expect("the function to be linked");
-
-    linker
-        .get_default(&mut store, "")
-        .expect("Should get the wasi runtime")
-        .typed::<(), ()>(&store)
-        .expect("should type the function")
-        .call(&mut store, ())
-        .expect("should call the function");
-
-    // 3. *
-    drop(store);
-
-    // 4. *
-    let contents: Vec<u8> = stdout
-        .try_into_inner()
-        .map_err(|_err| anyhow::Error::msg("sole remaining reference"))?
-        .into_inner();
-
-    // 5. *
-    let result = String::from_utf8(contents)?.trim().to_string();
-
-    // 6. *
-    let total_runtime = start.elapsed().as_millis();
-
-    println!(
-        "Done! Elapsed time: {}ms, used {}ms to start up.",
-        total_runtime, startup_time
-    );
-
-    Ok(FunctionResult {
-        result,
-        metrics: Some(Metrics {
-            total_runtime,
-            startup_time,
-        }),
-    })
-}
 ```
