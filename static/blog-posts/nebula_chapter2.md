@@ -289,8 +289,8 @@ order to fairly compare the two.
 ## Closing words
 
 If you're interested in seeing how the project was at the end of this blog post,
-I have tagged it as version v0.2 in my GitHub repo.
-[Link here](https://github.com/brehen/nebula/tree/v0.2)
+I have tagged it as version v0.2 in my GitHub repo
+([Link here](https://github.com/brehen/nebula/tree/v0.2)).
 
 The Fibonacci example lives under the folder functions/fibonacci.
 

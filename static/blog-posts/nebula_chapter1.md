@@ -152,6 +152,10 @@ Smells like victory!
 
 ## Closing words
 
+If you're interested in seeing how the project was at the end of this blog post,
+I have tagged it as version v0.1 in my GitHub repo
+([Link here](https://github.com/brehen/nebula/tree/v0.1)).
+
 Now you might be wondering: "Wait. What happened with steps 2 through 6? Neko
 ain't getting no treats with this rudimentary Hello World web server?? What
 gives??".
