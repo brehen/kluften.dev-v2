@@ -12,6 +12,7 @@
 	import LinkRender from '$lib/components/LinkRender.svelte'
 	import { page } from '$app/stores'
 	import { dev } from '$app/environment'
+	import Glossary from '$lib/components/Glossary.svelte'
 	export let data: PageData
 
 	let isProd = !dev
@@ -81,7 +82,9 @@
 	bind:this={section}
 >
 	<SvelteMarkdown
-		source={showArticleContent ? content : '# Working on it!'}
+		source={showArticleContent
+			? content
+			: "# Working on it! \n ## In the meantime, here's Neko dancing! \n ![Neko dancing](/blog-assets/neko-idle.gif)"}
 		renderers={{
 			code: CodeRender,
 			link: LinkRender
@@ -90,6 +93,7 @@
 	<hr />
 	<Feedback />
 	<hr />
+	<Glossary glossary={data.glossary} />
 </section>
 
 <style>
