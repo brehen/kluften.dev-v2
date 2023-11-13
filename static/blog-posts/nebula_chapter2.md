@@ -9,6 +9,8 @@
 In my previous two posts I laid out about why and how I'm building a Rust web
 server that can spin up WebAssembly modules on request.
 
+You might be wondering:
+
 > Isn't this essentially a web server that spins up the wasmtime runtime in the
 > background? Is that a Serverless Faas Platform?
 
