@@ -1,6 +1,6 @@
 # Building Nebula - Chapter 2: Let's write some Wasm/Wasi modules
 
-> How to interact with WebAssembly modules
+> Starting to interact with WebAssembly modules
 
 ![A Shiba inu running](/blog-assets/shiba_running.jpg)
 
