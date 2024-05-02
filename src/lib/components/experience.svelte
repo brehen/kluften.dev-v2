@@ -14,10 +14,20 @@ prose-ul:list-inside"
 		<h2 class="section-title bg-error-400">Experience</h2>
 		<div class="px-4 md:px-6">
 			<h3 class="flex justify-between items-end mt-4">
-				JProfessionals, Senior&NonBreakingSpace;Developer
-				<span class="text-right">Mar 2023 - Current</span>
+				Capra, Senior&NonBreakingSpace;Frontend Engineer
+				<span class="text-right">Dec 2023 - Current</span>
 			</h3>
-			<p>Stepped back into the realm of consulting and I am currently working for JPro.</p>
+		</div>
+		<div class="px-4 md:px-6">
+			<h3 class="flex justify-between items-end mt-4">
+				JProfessionals, Senior&NonBreakingSpace;Developer
+				<span class="text-right">Mar 2023 - Dec 2023</span>
+			</h3>
+			<p>
+				Stepped back into the realm of consulting and decided to bet on JPro. Here I created several
+				internal applications, including <a href="https://overhuset.no">overhuset.no</a>, which was
+				rebuilt entirely form scratch with SvelteKit and Tailwind.
+			</p>
 		</div>
 		<div class="px-4 md:px-6">
 			<h3 class="flex gap-2 justify-between items-end">

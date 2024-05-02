@@ -16,7 +16,7 @@
 					</span>developer based in Oslo.
 				</span>
 				<span>
-					Working for JPro, crafting
+					Working for Capra, crafting
 					<span
 						class="inline-block px-1 bg-white transition text-tertiary-500 hover:motion-safe:animate-spin"
 					>

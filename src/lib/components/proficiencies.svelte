@@ -7,7 +7,7 @@
 		},
 		{
 			heading: 'Frameworks',
-			subHeading: 'React, NextJS, Gatsby, Svelte, Phoenix'
+			subHeading: 'React, NextJS, Gatsby, Svelte, Phoenix, Actix'
 		},
 		{
 			heading: 'State management',

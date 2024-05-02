@@ -12,13 +12,17 @@ prose-h2:!text-primary-900 prose-h2:font-fancy"
 		<div class="grid-cols-3 px-6 md:grid md:pr-3">
 			<div class="col-span-2 border-b-2 md:border-none border-slate-900">
 				<p class="mt-4">
-					I graduated OsloMet with a degree in Computer Science in 2017. My first job was as a
-					consultant on the ServiceNow platform, creating custom Portals for our customers.
+					I graduated OsloMet with a degree in Computer Science in 2017. I'm currently working on a
+					master's degree at the University of Oslo in the field of Informatics.
 				</p>
 				<p>
-					After two years with ServiceNow, I moved onto more modern technology. React, NextJS,
-					Tailwind, Vitest and React Query are among my favorite technologies to work with at the
-					moment.
+					Check out my thesis project @ <a href="http://nebula.no">nebula.no</a>, where I've
+					developed a FaaS prototype powered by Rust and WebAssembly!
+				</p>
+				<p>
+					React, NextJS, Tailwind, Vitest and React Query are among my favorite technologies to work
+					with on the frontend at the moment. On the backend I'm in love with Rust and Elixir, while
+					proficient in Node as well.
 				</p>
 				<p>
 					I have three lovely pets, two british shorthairs: Linux and Gatsby, and a Shiba Inu -
