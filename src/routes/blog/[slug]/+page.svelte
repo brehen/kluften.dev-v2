@@ -5,14 +5,11 @@
 		setShouldSwapNavbar,
 		updateNavbarLimit
 	} from '$lib/stores/navbarStore'
-	import SvelteMarkdown from 'svelte-markdown'
 	import type { PageData } from './$types'
 	import Feedback from '$lib/components/feedback.svelte'
-	import CodeRender from '$lib/components/CodeRender.svelte'
-	import LinkRender from '$lib/components/LinkRender.svelte'
-	import { page } from '$app/stores'
 	import { dev } from '$app/environment'
 	import Glossary from '$lib/components/Glossary.svelte'
+	import { page } from '$app/state'
 	export let data: PageData
 
 	let isProd = !dev
@@ -78,30 +75,32 @@
 <section
 	class="prose py-10
   prose-a:text-warning-600-300-token dark:marker:text-white marker:text-slate-800"
-	id={$page.url.toString()}
+	id={page.url.toString()}
 	bind:this={section}
 >
-	<SvelteMarkdown
-		source={showArticleContent
-			? content
-			: "# Working on it! \n ## In the meantime, here's Neko dancing! \n ![Neko dancing](/blog-assets/neko-idle.gif)"}
-		renderers={{
-			code: CodeRender,
-			link: LinkRender
-		}}
-	/>
+	<!-- <SvelteMarkdown -->
+	<!-- 	source={showArticleContent -->
+	<!-- 		? content -->
+	<!-- 		: "# Working on it! \n ## In the meantime, here's Neko dancing! \n ![Neko dancing](/blog-assets/neko-idle.gif)"} -->
+	<!-- 	renderers={{ -->
+	<!-- 		code: CodeRender, -->
+	<!-- 		link: LinkRender -->
+	<!-- 	}} -->
+	<!-- /> -->
 	<hr />
 	<Feedback />
 	<hr />
-	<Glossary glossary={data.glossary} />
+	{#if data.glossary}
+		<Glossary glossary={data.glossary} />
+	{/if}
 </section>
 
-<style>
-	:global(section > p > img) {
-		margin-inline: auto;
-	}
-
-	:global(.prose h1, h2, h3, h4) {
-		@apply text-tertiary-600-300-token;
-	}
-</style>
+<!-- <style> -->
+<!-- 	:global(section > p > img) { -->
+<!-- 		margin-inline: auto; -->
+<!-- 	} -->
+<!---->
+<!-- 	:global(.prose h1, h2, h3, h4) { -->
+<!-- 		@apply text-tertiary-600-300-token; -->
+<!-- 	} -->
+<!-- </style> -->

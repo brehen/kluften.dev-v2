@@ -9,7 +9,7 @@
 			class="relative mt-0 w-full rounded-bl-2xl prose
 prose-h2:!text-primary-900 prose-h2:font-fancy"
 		>
-			<h2 class="section-title bg-blue-400">About the author</h2>
+			<h2 class="section-title noise bg-blue-400">About the author</h2>
 			<div class="flex gap-4 pt-4 px-4 md:pt-6 prose-p:my-0">
 				<img
 					src={marius}

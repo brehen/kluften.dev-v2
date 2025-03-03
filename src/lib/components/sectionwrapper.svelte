@@ -1,16 +1,37 @@
 <script lang="ts">
-	import Saos from 'saos'
+	import { onMount } from 'svelte'
+
 	export let maxW = 'max-w-prose'
+	let element: HTMLElement
+	let visible = false
+
+	onMount(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				if (entries[0].isIntersecting) {
+					visible = true
+					observer.disconnect() // Only animate once
+				}
+			},
+			{ threshold: 0.1 }
+		)
+
+		if (element) {
+			observer.observe(element)
+		}
+
+		return () => observer.disconnect()
+	})
 </script>
 
-<Saos animation={'swing-in-bottom-bck 0.2s cubic-bezier(0.35, 0.5, 0.65, 0.95) both'} once={true}>
-	<section class="flex justify-center w-full">
-		<div class={'flex p-1.5 w-full md:w-3/4 md:rounded-xl ' + maxW}>
-			<div
-				class="overflow-hidden w-full rounded-2xl border-2 border-b-[10px] border-l-[17px] border-primary-900 bg-white dark:bg-surface-700"
-			>
-				<slot />
-			</div>
+<section class="flex justify-center w-full" bind:this={element}>
+	<div class={'flex p-1.5 w-full md:w-3/4 md:rounded-xl ' + maxW}>
+		<div
+			class="overflow-hidden w-full rounded-2xl border-2 border-b-[10px] border-l-[17px] border-primary-900 bg-white dark:bg-surface-700 transition-all duration-300 ease-out {visible
+				? 'translate-y-0 opacity-100'
+				: 'translate-y-10 opacity-0'}"
+		>
+			<slot />
 		</div>
-	</section>
-</Saos>
+	</div>
+</section>

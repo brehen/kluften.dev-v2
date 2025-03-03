@@ -4,17 +4,10 @@
 </script>
 
 <SectionWrapper>
-	<div
-		class="relative mt-0 w-full rounded-bl-2xl prose
-prose-h2:!text-primary-900 prose-h2:font-fancy"
-	>
-		<h2 class="section-title bg-warning-500 h4">Background</h2>
+	<div class="relative mt-0 w-full rounded-bl-2xl prose prose-h2:!text-primary-900">
+		<h2 class="section-title noise bg-warning-500">Background</h2>
 		<div class="grid-cols-3 px-6 md:grid md:pr-3">
-			<div class="col-span-2 border-b-2 md:border-none border-slate-900">
-				<p class="mt-4">
-					I graduated OsloMet with a degree in Computer Science in 2017. I'm currently working on a
-					master's degree at the University of Oslo in the field of Informatics.
-				</p>
+			<div class="col-span-2 border-b-2 md:border-none border-slate-900 prose pt-6">
 				<p>
 					Check out my thesis project @ <a href="http://nebula.no">nebula.no</a>, where I've
 					developed a FaaS prototype powered by Rust and WebAssembly!
@@ -33,11 +26,11 @@ prose-h2:!text-primary-900 prose-h2:font-fancy"
 					board game or at a table of D&D. Maybe at our cottage.
 				</p>
 			</div>
-			<div class="flex col-span-1 gap-2 pt-4 md:flex-col md:px-4 md:pt-6 prose-p:my-0">
+			<div class="flex col-span-1 gap-2 py-4 md:flex-col md:px-4 md:pt-6 prose-p:my-0">
 				<img
 					src={marius}
 					alt="Me and Neko at ZZ Pizza in Oslo"
-					class="block m-0 mb-2 w-28 h-28 rounded-md border-2 md:w-full md:h-auto bg-warning border-slate-800"
+					class="block !m-0 mb-2 w-28 h-28 rounded-md border-2 md:w-full md:h-auto bg-warning border-slate-800"
 				/>
 				<div>
 					<p>Marius Nilsen Kluften</p>

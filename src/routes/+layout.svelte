@@ -1,9 +1,10 @@
 <script>
 	// Your selected Skeleton theme:
-	// import '../kluften.css'
 
 	// Finally, your application's global stylesheet (sometimes labeled 'app.css')
 	import '../app.css'
+	import '../kluften.css'
+
 	import '../keyframes.css'
 	import { dev } from '$app/environment'
 	import { inject } from '@vercel/analytics'
@@ -61,7 +62,7 @@
 		</div>
 	</div>
 	<div
-		class="flex flex-col items-center justify-center pt-nav px-8 w-screen max-w-[2560px] min-h-[100dvh]"
+		class="flex flex-col items-center justify-center pt-20 px-8 w-screen max-w-[2560px] min-h-[100dvh]"
 	>
 		<slot />
 	</div>

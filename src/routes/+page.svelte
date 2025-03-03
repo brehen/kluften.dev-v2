@@ -1,8 +1,4 @@
 <script>
-	import linux from '$lib/assets/linux-1.png'
-	import gatsby from '$lib/assets/gatsby-1.png'
-	import neko from '$lib/assets/neko-traced.png'
-
 	import Hero from '$lib/components/hero.svelte'
 	import AboutMe from '$lib/components/aboutme.svelte'
 	import Proficiences from '$lib/components/proficiencies.svelte'

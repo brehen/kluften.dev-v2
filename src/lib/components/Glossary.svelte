@@ -16,7 +16,7 @@
 				</svelte:fragment>
 				<svelte:fragment slot="content">
 					<ol>
-						{#each glossary as item}
+						{#each glossary as item (item.word)}
 							<li><b>{item.word}</b>: {item.description}</li>
 						{/each}
 					</ol>

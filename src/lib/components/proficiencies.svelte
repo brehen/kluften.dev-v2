@@ -3,35 +3,32 @@
 	const profs = [
 		{
 			heading: 'Programming languages',
-			subHeading: 'JavaScript/TypeScript, Elixir, Rust'
+			subHeading: 'TypeScript & Rust'
 		},
 		{
 			heading: 'Frameworks',
-			subHeading: 'React, NextJS, Gatsby, Svelte, Phoenix, Actix'
+			subHeading: 'React, Svelte, NextJS, Remix, SvelteKit & htmx'
 		},
 		{
 			heading: 'State management',
-			subHeading: 'React-Query, Zustand, Redux'
+			subHeading: 'React-Query & Zustand'
 		},
 		{
 			heading: 'Test frameworks',
-			subHeading: 'Jest, Vitest, RTL, Playwright, Cypress'
-		},
-		{
-			heading: 'Web services',
-			subHeading: 'REST, GraphQL'
+			subHeading: 'Vitest, RTL & Playwright'
 		}
 	]
 </script>
 
 <SectionWrapper>
-	<div class="w-full prose prose-h2:!text-primary-900 prose-h2:font-fancy">
-		<h2 class="section-title bg-tertiary-500">Technical Proficiencies</h2>
-		<div class="flex py-3 px-6 text-xl">
-			<ul class="p-0 m-0 list-none">
-				{#each profs as prof}
+	<div class="w-full prose prose-h2:!text-primary-900">
+		<h2 class="section-title noise bg-tertiary-500">Technical Proficiencies</h2>
+		<div class="pb-3 px-6 text-xl">
+			<p class="mb-2 text-tertiary-100">These days, I love these the most:</p>
+			<ul class="p-0 !m-0 list-none">
+				{#each profs as prof (prof.heading)}
 					<li class="p-0">
-						<strong>{prof.heading}: </strong>
+						<strong class="text-white">{prof.heading}: </strong>
 						<i>{prof.subHeading}</i>
 					</li>
 				{/each}

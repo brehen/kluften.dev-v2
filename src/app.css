@@ -1,7 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind variants;
+
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@import '@skeletonlabs/skeleton';
+@import '@skeletonlabs/skeleton/optional/presets';
+
+@source '../node_modules/@skeletonlabs/skeleton-svelte/dist';
 
 @font-face {
 	/* Reference name */
@@ -22,18 +26,11 @@
 .noise {
 	background-image: url("data:image/svg+xml,<svg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
+
 .transition-colors {
 	transition-timing-function: ease-in-out;
 }
 
-body {
-	@apply bg-surface-100-800-token;
-	@apply transition-colors;
-}
-
-/* a { */
-/* 	@apply !text-warning-600-300-token; */
-/* } */
 
 .prose {
 	@apply dark:text-white text-primary-900;
@@ -41,10 +38,6 @@ body {
 
 .prose blockquote {
 	@apply blockquote;
-}
-
-.prose a {
-	@apply anchor text-warning-600-300-token;
 }
 
 .prose h1 {
@@ -71,38 +64,19 @@ body {
 	@apply h6;
 }
 
-.prose table {
-	width: fit-content;
-	margin-inline: auto;
-}
-
-.prose strong {
-	@apply font-bold text-primary-900 dark:text-white;
+.prose a {
+  @apply anchor;
 }
 
 .section-title {
-	@apply p-6 pt-4 pb-2 mb-0 outline-primary-900 outline-dashed noise;
+	@apply p-6 pt-4 pb-2 mb-0 outline-primary-900 outline-dashed;
 }
 
 .prose {
 	--tw-prose-bullets: @apply text-primary-900;
 }
 
-.accordion-item button {
-	border-radius: 0;
-}
-.accordion-item {
-	@apply text-primary-900;
-}
+/*.not-prose a {*/
+/*	@apply text-black bg-warning-300 !no-underline;*/
+/*}*/
 
-.accordion-panel a {
-	@apply !text-warning-600;
-}
-
-.not-prose a {
-	@apply text-black bg-warning-300 !no-underline;
-}
-
-/* .a { */
-/* 	@apply anchor; */
-/* } */
