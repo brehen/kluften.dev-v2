@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Logo from '$lib/assets/svgs/logo.svelte'
-	import { LightSwitch } from '@skeletonlabs/skeleton'
-	import { fade, fly } from 'svelte/transition'
+	import { fly } from 'svelte/transition'
 
 	import {
 		whenToSwapNavBar,
@@ -33,11 +32,11 @@
 <header>
 	<div
 		class={[
-			'fixed z-[999] w-full flex justify-center h-20 px-4 md:px-8 py-4 transition-all',
-			onSide ? 'bg-surface-100-800-token md:!bg-transparent' : 'bg-surface-100-800-token'
+			'fixed z-[999] w-full flex justify-center items-end h-20 px-4 md:px-8 py-4 transition-all',
+			onSide ? 'bg-surface-100-900 md:!bg-transparent' : 'bg-surface-100-900'
 		].join(' ')}
 	>
-		<div class="flex items-center justify-between w-full max-w-5xl relative">
+		<div class="flex items-end justify-between w-full max-w-5xl relative">
 			<div class="relative">
 				<a href="/" class="flex gap-4 items-end !text-primary-900-50-token leading-none">
 					<Logo />
@@ -61,11 +60,8 @@
 					</div>
 				{/if}
 			</div>
-			<nav
-				class="border-t-black border-t-2 md:border-none fixed md:relative flex gap-8 justify-between md:w-fit w-full bottom-0 left-0 md:!bg-transparent bg-surface-100-800-token p-4"
-			>
-				<a href="/blog" class="!text-warning-600-300-token">blog</a>
-				<LightSwitch />
+			<nav class="flex gap-8 justify-between">
+				<a href="/blog" class="!text-tertiary-800-200 leading-4">blog</a>
 			</nav>
 		</div>
 	</div>

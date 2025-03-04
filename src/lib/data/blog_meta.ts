@@ -6,6 +6,10 @@ type BlogMeta = {
 	description: string
 	canonicalUrl?: string
 	canonicalDate?: string
+  sequel?: {
+  url: string
+  label: string
+  }
 	glossary?: {
 		word: string
 		description: string
@@ -26,6 +30,10 @@ export default [
 		status: 'published',
 		title: 'Building Nebula - Chapter 2',
 		description: 'Starting to interact with WebAssembly modules',
+    sequel: {
+      url: '/blog/nebula_chapter3',
+      label: "Stay tuned for chapter 3"
+    },
 		glossary: [
 			{
 				word: 'WebAssembly (Wasm)',
@@ -100,6 +108,10 @@ export default [
 		status: 'published',
 		title: 'Building Nebula - Chapter 1',
 		description: 'Building a prototype with Rust',
+    sequel: {
+        url: '/blog/nebula_chapter2',
+        label: "Stay tuned for chapter 3"
+    },
 		glossary: [
 			{
 				word: 'FaaS (Function as a Service)',
@@ -174,6 +186,10 @@ export default [
 		status: 'published',
 		title: 'Building Nebula - Prologue',
 		description: "My master thesis' backstory, building a FaaS prototype",
+    sequel: {
+      url: '/blog/nebula_chapter1',
+      label: "Stay tuned for chapter 3"
+    },
 		glossary: [
 			{
 				word: 'Function-as-a-Service (FaaS)',

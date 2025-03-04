@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
-	import SvelteMarkdown from 'svelte-markdown'
 
 	export let text: string
 
@@ -43,8 +42,6 @@
 </script>
 
 <div class="relative mb-8" bind:this={block}>
-	<SvelteMarkdown source={text} />
-
 	<div class="flex justify-end pt-4">
 		<button on:click={swapParagraph} class="bg-pink-300 text-stone-900 rounded-lg px-4 py-2">
 			♻️ Regenerate
