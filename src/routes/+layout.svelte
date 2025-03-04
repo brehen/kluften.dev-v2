@@ -14,6 +14,8 @@
 	import neko from '$lib/assets/neko-traced.png'
 
 	inject({ mode: dev ? 'development' : 'production' })
+
+	let { children } = $props()
 </script>
 
 <svelte:head>
@@ -64,7 +66,7 @@
 	<div
 		class="flex flex-col items-center justify-center pt-20 px-8 w-screen max-w-[2560px] min-h-[100dvh]"
 	>
-		<slot />
+		{@render children()}
 	</div>
 	<div class="hidden relative flex-1 3xl:block">
 		<div class="flex sticky top-4 left-4 flex-col justify-between w-full h-full max-h-screen">

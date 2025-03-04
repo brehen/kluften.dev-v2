@@ -60,9 +60,9 @@
 					</div>
 				{/if}
 			</div>
-			<!-- <nav class="flex gap-8 justify-between"> -->
-			<!-- 	<a href="/blog" class="!text-tertiary-800-200 leading-4">blog</a> -->
-			<!-- </nav> -->
+			<nav class="flex gap-8 justify-between">
+				<a href="/blog" class="!text-tertiary-800-200 leading-4">blog</a>
+			</nav>
 		</div>
 	</div>
 </header>

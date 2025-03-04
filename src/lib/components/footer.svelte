@@ -3,8 +3,8 @@
 	import marius from '$lib/assets/marius.jpeg'
 </script>
 
-<footer class="mt-auto w-screen mb-nav">
-	<SectionWrapper maxW="max-w-md">
+<footer class="mt-auto w-screen mb-10">
+	<SectionWrapper maxW="max-w-lg">
 		<div
 			class="relative mt-0 w-full rounded-bl-2xl prose
 prose-h2:!text-primary-900 prose-h2:font-fancy"
@@ -14,7 +14,7 @@ prose-h2:!text-primary-900 prose-h2:font-fancy"
 				<img
 					src={marius}
 					alt="Me and Neko at ZZ Pizza in Oslo"
-					class="block m-0 mb-4 max-w-[120px] w-2/5 rounded-md border-2 md:w-full md:h-auto bg-warning border-slate-800"
+					class="block m-0 mt-0 mb-4 max-w-[120px] w-2/5 rounded-md border-2 md:w-full md:h-auto bg-warning border-slate-800"
 				/>
 				<p class="mt-4 w-3/5 md:w-1/2">Marius likes cool tech and has three bomb ass pets.</p>
 				<div class="space-y-2 mb-4 w-fit justify-center">

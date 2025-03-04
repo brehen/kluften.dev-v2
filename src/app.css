@@ -37,7 +37,16 @@
 }
 
 .prose blockquote {
-	@apply blockquote;
+	@apply blockquote border-tertiary-300 !border-l-6;
+}
+
+.prose strong {
+  @apply text-warning-200;
+}
+
+
+.prose img {
+  margin-inline: auto;
 }
 
 .prose h1 {
