@@ -8,7 +8,7 @@
 		// Add global error handlers to suppress Bevy's control flow exception
 		try {
 			// Dynamically import the game module
-			const gameModule = await import('/games/coin-collector/bevygame.js?url')
+			const gameModule = await import(/* @vite-ignore */ '/games/coin-picker/coin-picker.js')
 			// Initialize the game
 			try {
 				// @ts-ignore
@@ -46,8 +46,8 @@
 </script>
 
 <div class="max-w-3xl mx-auto p-5">
-	<h1 class="text-3xl font-bold">Coin Collector!</h1>
-	<h2 class="text-xl mb-4">Collect as many coins as you can!</h2>
+	<h1 class="text-3xl font-bold">Coin Picker</h1>
+	<h2 class="text-xl mb-4">Collect coins, buy upgrades, grab powerups!</h2>
 	<div
 		class="relative w-[640px] h-[640px] mx-auto bg-black rounded-lg overflow-hidden"
 		bind:this={gameContainer}
@@ -59,6 +59,6 @@
 		{/if}
 	</div>
 	<div class="mt-5 text-center">
-		<p>Use arrow keys or WASD to move the character.</p>
+		<p>Use arrow keys or WASD to move. Collect coins, grab powerups, and spend your earnings on upgrades!</p>
 	</div>
 </div>
