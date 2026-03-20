@@ -5,41 +5,42 @@
 	let gameContainer: HTMLDivElement
 
 	onMount(async () => {
-		// Add global error handlers to suppress Bevy's control flow exception
 		try {
-			// Dynamically import the game module
-			const gameModule = await import(/* @vite-ignore */ '/games/coin-picker/coin-picker.js')
-			// Initialize the game
-			try {
-				// @ts-ignore
-				await gameModule.default()
-			} catch (err) {
-				// @ts-ignore
-				if (!err?.message?.includes('Using exceptions for control flow')) {
-					throw err
+			// Load the WASM module via a script tag to bypass Vite's static analysis
+			const script = document.createElement('script')
+			script.type = 'module'
+			script.textContent = `
+				import init from '/games/coin-picker/coin-picker.js';
+				try {
+					await init();
+				} catch (err) {
+					if (!err?.message?.includes('Using exceptions for control flow')) {
+						console.error('Game init error:', err);
+					}
 				}
-			}
+			`
+			document.head.appendChild(script)
 
-			// Move the canvas into our container
-			// Bevy creates a canvas and appends it to body by default
+			// Wait for Bevy to create the canvas
+			await new Promise<void>((resolve) => {
+				const check = setInterval(() => {
+					if (document.querySelector('canvas')) {
+						clearInterval(check)
+						resolve()
+					}
+				}, 100)
+			})
+
 			const canvas = document.querySelector('canvas')
 			if (canvas && gameContainer) {
-				// Remove from body and add to our container
 				canvas.remove()
 				gameContainer.appendChild(canvas)
-
-				// Make it fit the container
 				canvas.style.width = '100%'
 				canvas.style.height = '100%'
 			}
 		} catch (err) {
-			// Suppress the specific Bevy error
-			// @ts-ignore
-			if (!err?.message?.includes('Using exceptions for control flow')) {
-				console.error('Failed to load game:', err)
-			}
+			console.error('Failed to load game:', err)
 		} finally {
-			// Mark as loaded regardless
 			gameLoaded = true
 		}
 	})
